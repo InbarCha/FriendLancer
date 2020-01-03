@@ -103,24 +103,24 @@
         <scene sceneID="MPV-Db-gNi">
             <objects>
                 <tableViewController storyboardIdentifier="Formus" id="uUi-zY-oR2" userLabel="Formus" customClass="ForumsTableViewController" customModule="FriendLancer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Svv-ox-1IW" userLabel="TableView">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="108" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Svv-ox-1IW" userLabel="TableView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="BeM-ik-F6z" userLabel="ForumsTypesCell" customClass="ForumTopicsCell" customModule="FriendLancer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ForumTopicsCell" rowHeight="156" id="BeM-ik-F6z" userLabel="ForumsTypesCell" customClass="ForumTopicsCell" customModule="FriendLancer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="156"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BeM-ik-F6z" id="V05-ct-exd" customClass="ForumTopicsCell" customModule="FriendLancer" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="156"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KyL-U1-J1B">
                                             <rect key="frame" x="21" y="6" width="89" height="67"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Accounting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7FV-gS-dif">
-                                            <rect key="frame" x="152" y="11" width="242" height="58"/>
+                                            <rect key="frame" x="152" y="10" width="242" height="58"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -131,7 +131,6 @@
                                 <connections>
                                     <outlet property="ForumTopicImage" destination="KyL-U1-J1B" id="FsZ-4g-ySf"/>
                                     <outlet property="ForumTopicLbl" destination="7FV-gS-dif" id="vzw-aN-2eh"/>
-                                    <segue destination="WJ5-we-lgM" kind="show" trigger="accessoryAction" id="0d0-rH-cDr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -140,11 +139,85 @@
                             <outlet property="delegate" destination="uUi-zY-oR2" id="VGf-mb-67Y"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Forum Topics" id="tGA-n5-ebq"/>
+                    <navigationItem key="navigationItem" title="Forum Topics" id="tGA-n5-ebq">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="TWr-b2-76h">
+                            <connections>
+                                <segue destination="4bO-Ak-7QO" kind="show" id="Qmj-zs-vqm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addNewForumBtn" destination="TWr-b2-76h" id="vcx-jj-1LS"/>
+                        <segue destination="WJ5-we-lgM" kind="show" id="veJ-62-ixl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q6W-31-DWE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2468" y="2160"/>
+            <point key="canvasLocation" x="-2468.1159420289855" y="2159.5982142857142"/>
+        </scene>
+        <!--newForum-->
+        <scene sceneID="xOO-uk-qvr">
+            <objects>
+                <viewController id="4bO-Ak-7QO" userLabel="newForum" customClass="NewForumViewController" customModule="FriendLancer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QmO-Lf-ltT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Forum Topic Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLW-YK-dA8">
+                                <rect key="frame" x="64" y="167" width="149" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Forum Icon:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ct-hK-XkL">
+                                <rect key="frame" x="64" y="298" width="91" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hbE-wO-vz7">
+                                <rect key="frame" x="64" y="203" width="287" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySG-Pc-BtM">
+                                <rect key="frame" x="64" y="350" width="287" height="197"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0I-nv-eCz">
+                                <rect key="frame" x="190" y="641" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="Save:" destination="4bO-Ak-7QO" eventType="touchUpInside" id="8UV-5j-f9P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IF-bY-169">
+                                <rect key="frame" x="302" y="555" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Choose"/>
+                                <connections>
+                                    <action selector="addIconFormGallery:" destination="4bO-Ak-7QO" eventType="touchUpInside" id="fFA-FK-fmf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="QLR-Ou-iHa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="vGj-qz-oDU"/>
+                    <connections>
+                        <outlet property="ForumIcon" destination="ySG-Pc-BtM" id="TG0-PZ-YGr"/>
+                        <outlet property="ForumTopicNameInput" destination="hbE-wO-vz7" id="gLv-Au-B5p"/>
+                        <outlet property="chooseIconBtn" destination="6IF-bY-169" id="IwO-Xf-f4h"/>
+                        <outlet property="saveNewForumBtn" destination="a0I-nv-eCz" id="wEv-Of-dDh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ePz-Cd-rhf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2468.1159420289855" y="2893.5267857142858"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="i9U-hm-mtT">
@@ -208,10 +281,10 @@
             </objects>
             <point key="canvasLocation" x="-3242" y="1393"/>
         </scene>
-        <!--Forums-->
+        <!--ForumsNavigation-->
         <scene sceneID="fkK-Mc-3Wh">
             <objects>
-                <navigationController id="wZs-bl-k74" sceneMemberID="viewController">
+                <navigationController id="wZs-bl-k74" userLabel="ForumsNavigation" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Forums" image="person.3" catalog="system" id="J0P-Uh-n9l" userLabel="Forums"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zcl-Rg-MiY">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -231,5 +304,6 @@
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="person" catalog="system" width="64" height="58"/>
         <image name="person.3" catalog="system" width="72" height="35"/>
+        <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
 </document>
