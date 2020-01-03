@@ -1,24 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R2n-Rp-au6">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Forums-->
+        <scene sceneID="xJ0-Ks-4MH">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="rvA-Cg-kse" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7FK-m0-EjN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="T6O-aD-i0R"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Forums" image="text.bubble" catalog="system" id="Pop-jm-IFX" userLabel="Forums"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NdF-Gj-CIF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-2135" y="1393"/>
+        </scene>
+        <!--My Zone-->
+        <scene sceneID="Pa0-ny-q5K">
+            <objects>
+                <viewController id="dc4-UQ-hxc" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OQj-uc-vBm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="IVF-bL-htR"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My Zone" image="person" catalog="system" id="t2a-z1-Jg6" userLabel="MyZone"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SqA-WB-aEX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-386" y="1393"/>
+        </scene>
+        <!--Meet Places-->
+        <scene sceneID="0ud-n7-1x6">
+            <objects>
+                <viewController id="oiv-u0-7UE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BaF-8r-J7Q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="zsI-PT-dVK"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Meet Places" image="book" catalog="system" id="Lml-VD-lV0" userLabel="MeetPlaces"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ryB-ub-z6Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1271" y="1393"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="80w-8M-6Vd">
+            <objects>
+                <viewController title="Home" id="prS-QF-bf5" customClass="ViewController" customModule="FriendLancer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UwQ-iS-mZq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Ruq-iF-1FH"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="sLd-JO-cJs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2bA-tc-yJg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2958" y="1393"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="EyO-od-dZt">
+            <objects>
+                <tabBarController id="R2n-Rp-au6" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ivl-57-bPl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="prS-QF-bf5" kind="relationship" relationship="viewControllers" id="PKq-kM-cVN"/>
+                        <segue destination="rvA-Cg-kse" kind="relationship" relationship="viewControllers" id="X3w-aF-BUV"/>
+                        <segue destination="oiv-u0-7UE" kind="relationship" relationship="viewControllers" id="jdL-By-n9w"/>
+                        <segue destination="dc4-UQ-hxc" kind="relationship" relationship="viewControllers" id="ukg-uX-j4I"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="otm-gT-DGt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1683" y="355"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="book" catalog="system" width="64" height="50"/>
+        <image name="house" catalog="system" width="64" height="54"/>
+        <image name="person" catalog="system" width="64" height="58"/>
+        <image name="text.bubble" catalog="system" width="64" height="54"/>
+    </resources>
 </document>

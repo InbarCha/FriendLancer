@@ -41,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				3DF9073123BF2B6B00D24A6B /* FriendLancer */,
-				3DF9073023BF2B6B00D24A6B /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,6 +50,7 @@
 				3DF9072F23BF2B6B00D24A6B /* FriendLancer.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		3DF9073123BF2B6B00D24A6B /* FriendLancer */ = {
@@ -63,6 +63,7 @@
 				3DF9073B23BF2B6C00D24A6B /* Assets.xcassets */,
 				3DF9073D23BF2B6C00D24A6B /* LaunchScreen.storyboard */,
 				3DF9074023BF2B6C00D24A6B /* Info.plist */,
+				3DF9073023BF2B6B00D24A6B /* Products */,
 			);
 			path = FriendLancer;
 			sourceTree = "<group>";
