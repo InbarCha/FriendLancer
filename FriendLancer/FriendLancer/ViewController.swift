@@ -10,9 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var LogInBTN: UIButton!
+    
+    @IBOutlet weak var RegisterBTN: UIButton!
+    
+    @IBOutlet weak var InfoLBL: UILabel!
+    
+    @IBOutlet weak var ImageHome: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
         
         
     }

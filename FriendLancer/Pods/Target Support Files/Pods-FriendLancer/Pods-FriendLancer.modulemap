@@ -1,0 +1,6 @@
+framework module Pods_FriendLancer {
+  umbrella header "Pods-FriendLancer-umbrella.h"
+
+  export *
+  module * { export * }
+}

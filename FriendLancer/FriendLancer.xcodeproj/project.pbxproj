@@ -7,15 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1614BCC77C3587A5A8B0C3A6 /* Pods_FriendLancer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F246FAE97693BF037C192FA /* Pods_FriendLancer.framework */; };
 		3DF9073323BF2B6B00D24A6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9073223BF2B6B00D24A6B /* AppDelegate.swift */; };
 		3DF9073523BF2B6B00D24A6B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9073423BF2B6B00D24A6B /* SceneDelegate.swift */; };
 		3DF9073723BF2B6B00D24A6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9073623BF2B6B00D24A6B /* ViewController.swift */; };
 		3DF9073A23BF2B6B00D24A6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF9073823BF2B6B00D24A6B /* Main.storyboard */; };
 		3DF9073C23BF2B6C00D24A6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DF9073B23BF2B6C00D24A6B /* Assets.xcassets */; };
 		3DF9073F23BF2B6C00D24A6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF9073D23BF2B6C00D24A6B /* LaunchScreen.storyboard */; };
+		3DF9074923BF388800D24A6B /* MyZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9074823BF388800D24A6B /* MyZoneViewController.swift */; };
+		3DF9074B23BF39B800D24A6B /* ForumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9074A23BF39B800D24A6B /* ForumsTableViewController.swift */; };
+		3DF9074D23BF3A5700D24A6B /* MeetPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9074C23BF3A5700D24A6B /* MeetPlaceTableViewController.swift */; };
+		3DF9074F23BF3E9000D24A6B /* ForumTopicsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9074E23BF3E9000D24A6B /* ForumTopicsCell.swift */; };
+		3DF9075423BF428300D24A6B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DF9075323BF428300D24A6B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F246FAE97693BF037C192FA /* Pods_FriendLancer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FriendLancer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF9072F23BF2B6B00D24A6B /* FriendLancer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendLancer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF9073223BF2B6B00D24A6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DF9073423BF2B6B00D24A6B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +31,13 @@
 		3DF9073B23BF2B6C00D24A6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DF9073E23BF2B6C00D24A6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DF9074023BF2B6C00D24A6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DF9074823BF388800D24A6B /* MyZoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyZoneViewController.swift; sourceTree = "<group>"; };
+		3DF9074A23BF39B800D24A6B /* ForumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumsTableViewController.swift; sourceTree = "<group>"; };
+		3DF9074C23BF3A5700D24A6B /* MeetPlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetPlaceTableViewController.swift; sourceTree = "<group>"; };
+		3DF9074E23BF3E9000D24A6B /* ForumTopicsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumTopicsCell.swift; sourceTree = "<group>"; };
+		3DF9075323BF428300D24A6B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EB6EB9FDA21F809B594C3201 /* Pods-FriendLancer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendLancer.release.xcconfig"; path = "Target Support Files/Pods-FriendLancer/Pods-FriendLancer.release.xcconfig"; sourceTree = "<group>"; };
+		FF799659AD8E28092A415C3F /* Pods-FriendLancer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendLancer.debug.xcconfig"; path = "Target Support Files/Pods-FriendLancer/Pods-FriendLancer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,16 +45,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1614BCC77C3587A5A8B0C3A6 /* Pods_FriendLancer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04FF7F69794D8EEC2F80A479 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F246FAE97693BF037C192FA /* Pods_FriendLancer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3DF9072623BF2B6B00D24A6B = {
 			isa = PBXGroup;
 			children = (
 				3DF9073123BF2B6B00D24A6B /* FriendLancer */,
+				D1B580C78679E5A24E142FA5 /* Pods */,
+				04FF7F69794D8EEC2F80A479 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +81,10 @@
 		3DF9073123BF2B6B00D24A6B /* FriendLancer */ = {
 			isa = PBXGroup;
 			children = (
+				3DF9075323BF428300D24A6B /* GoogleService-Info.plist */,
+				3DF9075223BF40E300D24A6B /* MeetPlaces */,
+				3DF9075123BF40D400D24A6B /* MyZone */,
+				3DF9075023BF40BD00D24A6B /* Forums */,
 				3DF9073223BF2B6B00D24A6B /* AppDelegate.swift */,
 				3DF9073423BF2B6B00D24A6B /* SceneDelegate.swift */,
 				3DF9073623BF2B6B00D24A6B /* ViewController.swift */,
@@ -68,6 +97,41 @@
 			path = FriendLancer;
 			sourceTree = "<group>";
 		};
+		3DF9075023BF40BD00D24A6B /* Forums */ = {
+			isa = PBXGroup;
+			children = (
+				3DF9074E23BF3E9000D24A6B /* ForumTopicsCell.swift */,
+				3DF9074A23BF39B800D24A6B /* ForumsTableViewController.swift */,
+			);
+			path = Forums;
+			sourceTree = "<group>";
+		};
+		3DF9075123BF40D400D24A6B /* MyZone */ = {
+			isa = PBXGroup;
+			children = (
+				3DF9074823BF388800D24A6B /* MyZoneViewController.swift */,
+			);
+			path = MyZone;
+			sourceTree = "<group>";
+		};
+		3DF9075223BF40E300D24A6B /* MeetPlaces */ = {
+			isa = PBXGroup;
+			children = (
+				3DF9074C23BF3A5700D24A6B /* MeetPlaceTableViewController.swift */,
+			);
+			path = MeetPlaces;
+			sourceTree = "<group>";
+		};
+		D1B580C78679E5A24E142FA5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FF799659AD8E28092A415C3F /* Pods-FriendLancer.debug.xcconfig */,
+				EB6EB9FDA21F809B594C3201 /* Pods-FriendLancer.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -75,9 +139,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DF9074323BF2B6C00D24A6B /* Build configuration list for PBXNativeTarget "FriendLancer" */;
 			buildPhases = (
+				B26252E48B022A874B6A60E1 /* [CP] Check Pods Manifest.lock */,
 				3DF9072B23BF2B6B00D24A6B /* Sources */,
 				3DF9072C23BF2B6B00D24A6B /* Frameworks */,
 				3DF9072D23BF2B6B00D24A6B /* Resources */,
+				53B3CC09553514B8114735B8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DF9073F23BF2B6C00D24A6B /* LaunchScreen.storyboard in Resources */,
+				3DF9075423BF428300D24A6B /* GoogleService-Info.plist in Resources */,
 				3DF9073C23BF2B6C00D24A6B /* Assets.xcassets in Resources */,
 				3DF9073A23BF2B6B00D24A6B /* Main.storyboard in Resources */,
 			);
@@ -134,13 +201,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		53B3CC09553514B8114735B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FriendLancer/Pods-FriendLancer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FriendLancer/Pods-FriendLancer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FriendLancer/Pods-FriendLancer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B26252E48B022A874B6A60E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FriendLancer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3DF9072B23BF2B6B00D24A6B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF9074B23BF39B800D24A6B /* ForumsTableViewController.swift in Sources */,
+				3DF9074F23BF3E9000D24A6B /* ForumTopicsCell.swift in Sources */,
 				3DF9073723BF2B6B00D24A6B /* ViewController.swift in Sources */,
+				3DF9074D23BF3A5700D24A6B /* MeetPlaceTableViewController.swift in Sources */,
 				3DF9073323BF2B6B00D24A6B /* AppDelegate.swift in Sources */,
+				3DF9074923BF388800D24A6B /* MyZoneViewController.swift in Sources */,
 				3DF9073523BF2B6B00D24A6B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +396,7 @@
 		};
 		3DF9074423BF2B6C00D24A6B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF799659AD8E28092A415C3F /* Pods-FriendLancer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +414,7 @@
 		};
 		3DF9074523BF2B6C00D24A6B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB6EB9FDA21F809B594C3201 /* Pods-FriendLancer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
