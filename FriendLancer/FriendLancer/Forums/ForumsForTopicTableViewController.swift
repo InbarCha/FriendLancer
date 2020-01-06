@@ -1,78 +1,49 @@
 //
-//  ForumsTableViewController.swift
+//  ForumsForTopicTableViewController.swift
 //  FriendLancer
 //
-//  Created by Studio on 03/01/2020.
+//  Created by Studio on 06/01/2020.
 //  Copyright © 2020 Nitzan & Inbar. All rights reserved.
 //
 
 import UIKit
 
-class ForumsTableViewController: UITableViewController {
-    var data = [Forum]()
-    @IBOutlet weak var addNewForumBtn: UIBarButtonItem!
-    
-    var observer:Any?;
-    var selected:Forum?
+class ForumsForTopicTableViewController: UITableViewController {
+
+    var forum:Forum?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        observer = ModelEvents.ForumDataNotification.observe{
-            self.reloadData();
-        }
-        
-        reloadData();
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1;
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return data.count
+        return 0
     }
 
-    func reloadData(){
-        Model.instance.getAllForums { (_data:[Forum]?) in
-            if (_data != nil) {
-                self.data = _data!;
-                self.tableView.reloadData();
-            }
-        };
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
-        
-    }
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:ForumTopicsCell = tableView.dequeueReusableCell(withIdentifier: "ForumTopicsCell", for: indexPath) as! ForumTopicsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
-        let forum = data[indexPath.row]
-        cell.ForumTopicLbl.text = forum.forumTopic
-        cell.ForumTopicImage.image = UIImage(named: "avatar")
+
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selected = data[indexPath.row]
-        performSegue(withIdentifier: "ToForumPostsSegue", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "ToForumPostsSegue"){
-            let vc:ForumsForTopicTableViewController = segue.destination as! ForumsForTopicTableViewController
-            vc.title = selected?.forumTopic
-            vc.forum = selected
-        }
-    }
-    
-    
+    */
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

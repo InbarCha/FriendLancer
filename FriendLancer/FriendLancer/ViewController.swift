@@ -14,15 +14,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var RegisterBTN: UIButton!
     
-    @IBOutlet weak var explanationLbl: UILabel!
-    
     @IBOutlet weak var ImageHome: UIImageView!
     
+    @IBOutlet weak var enjoyImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        ImageHome = UIImage(named: "HomeImage")
+        ImageHome.image = UIImage(named: "HomeImage")
+        enjoyImage.image = UIImage(named: "EnjoyImage")
     }
 
 

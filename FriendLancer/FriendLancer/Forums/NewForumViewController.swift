@@ -11,6 +11,7 @@ import UIKit
 class NewForumViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate{
 
+    @IBOutlet weak var BannerImage: UIImageView!
     @IBOutlet weak var ForumTopicNameInput: UITextField!
     @IBOutlet weak var ForumIcon: UIImageView!
     @IBOutlet weak var chooseIconBtn: UIButton!
@@ -20,6 +21,8 @@ UINavigationControllerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        BannerImage.image = UIImage(named: "NewForumBannerImage2")
+        ForumIcon.image = UIImage(named:"avatar")
     }
     
     
