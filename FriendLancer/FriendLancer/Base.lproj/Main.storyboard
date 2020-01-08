@@ -114,27 +114,27 @@
         <scene sceneID="MPV-Db-gNi">
             <objects>
                 <tableViewController storyboardIdentifier="Formus" id="uUi-zY-oR2" userLabel="Formus" customClass="ForumsTableViewController" customModule="FriendLancer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="108" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Svv-ox-1IW" userLabel="TableView">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Svv-ox-1IW" userLabel="TableView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ForumTopicsCell" rowHeight="142" id="BeM-ik-F6z" userLabel="ForumsTypesCell" customClass="ForumTopicsCell" customModule="FriendLancer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="142"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ForumTopicsCell" rowHeight="101" id="BeM-ik-F6z" userLabel="ForumsTypesCell" customClass="ForumTopicsCell" customModule="FriendLancer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BeM-ik-F6z" id="V05-ct-exd" customClass="ForumTopicsCell" customModule="FriendLancer" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="142"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="101"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KyL-U1-J1B">
-                                            <rect key="frame" x="21" y="6" width="89" height="67"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="123" height="101"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Accounting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7FV-gS-dif">
-                                            <rect key="frame" x="152" y="10" width="242" height="58"/>
+                                            <rect key="frame" x="131" y="11" width="242" height="58"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -175,13 +175,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="142" id="rUo-iM-Oz7" customClass="ForumPostCell" customModule="FriendLancer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="142"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="94" id="rUo-iM-Oz7" customClass="ForumPostCell" customModule="FriendLancer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="94"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rUo-iM-Oz7" id="ucp-On-oE8">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="142"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subject:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbs-n1-fwr" colorLabel="IBBuiltInLabel-Red">
+                                            <rect key="frame" x="12" y="11" width="69" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meeting Place:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LS0-SX-8wC" colorLabel="IBBuiltInLabel-Red">
+                                            <rect key="frame" x="12" y="50" width="122" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="actual meeting place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAl-qJ-0uE">
+                                            <rect key="frame" x="142" y="50" width="263" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="actualSubject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94s-6t-PUF">
+                                            <rect key="frame" x="142" y="11" width="263" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="actualMeetingPlaceLbl" destination="GAl-qJ-0uE" id="zbH-Tn-gDt"/>
+                                    <outlet property="actualSubjectLbk" destination="94s-6t-PUF" id="4kX-IH-1Bb"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -189,12 +223,40 @@
                             <outlet property="delegate" destination="fik-Cn-Zhi" id="O9G-gT-S2c"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="IhP-od-ddP" userLabel="Forum Topics"/>
+                    <navigationItem key="navigationItem" id="IhP-od-ddP" userLabel="Forum Topics">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="G2E-G0-LmB">
+                            <connections>
+                                <segue destination="rUd-l8-hMd" kind="show" id="rFw-PW-Ejg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAN-d8-1hm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1578.2608695652175" y="2157.5892857142858"/>
+        </scene>
+        <!--Add New Post-->
+        <scene sceneID="ANy-45-UET">
+            <objects>
+                <viewController id="rUd-l8-hMd" customClass="NewPostViewController" customModule="FriendLancer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aAK-hy-YQP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NewImage" translatesAutoresizingMaskIntoConstraints="NO" id="6qF-5P-ZfN">
+                                <rect key="frame" x="68" y="88" width="279" height="238"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Rby-8M-1fs"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add New Post" id="MfO-PR-ssL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A7R-vL-sAU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1578.2608695652175" y="2893.5267857142858"/>
         </scene>
         <!--newForum-->
         <scene sceneID="xOO-uk-qvr">
@@ -252,7 +314,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="QLR-Ou-iHa"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vGj-qz-oDU"/>
+                    <navigationItem key="navigationItem" title="Add New Forum" id="vGj-qz-oDU"/>
                     <connections>
                         <outlet property="BannerImage" destination="h2q-CK-Ox0" id="7Wb-7H-Gu9"/>
                         <outlet property="ForumIcon" destination="ySG-Pc-BtM" id="TG0-PZ-YGr"/>
@@ -331,6 +393,7 @@
     </scenes>
     <resources>
         <image name="NewForumBannerImage2" width="1077" height="661"/>
+        <image name="NewImage" width="600" height="569"/>
         <image name="book" catalog="system" width="64" height="50"/>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="person" catalog="system" width="64" height="58"/>

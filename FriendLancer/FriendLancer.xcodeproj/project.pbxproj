@@ -12,6 +12,8 @@
 		3D01F62A23BF52E500955EAA /* ModelFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D01F62923BF52E500955EAA /* ModelFirebase.swift */; };
 		3D01F62C23BF537800955EAA /* Forum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D01F62B23BF537800955EAA /* Forum.swift */; };
 		3D01F62E23BF5B7F00955EAA /* NewForumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D01F62D23BF5B7F00955EAA /* NewForumViewController.swift */; };
+		3D03298423C5D336004522CA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D03298323C5D336004522CA /* Post.swift */; };
+		3D03298723C5D86D004522CA /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D03298623C5D86D004522CA /* NewPostViewController.swift */; };
 		3DF85BE123C391C0006296AC /* ForumsForTopicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF85BE023C391C0006296AC /* ForumsForTopicTableViewController.swift */; };
 		3DF85BE323C39261006296AC /* ForumPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF85BE223C39261006296AC /* ForumPostCell.swift */; };
 		3DF9073323BF2B6B00D24A6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9073223BF2B6B00D24A6B /* AppDelegate.swift */; };
@@ -33,6 +35,8 @@
 		3D01F62923BF52E500955EAA /* ModelFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFirebase.swift; sourceTree = "<group>"; };
 		3D01F62B23BF537800955EAA /* Forum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forum.swift; sourceTree = "<group>"; };
 		3D01F62D23BF5B7F00955EAA /* NewForumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewForumViewController.swift; sourceTree = "<group>"; };
+		3D03298323C5D336004522CA /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Post.swift; path = /Users/studio/Desktop/GitFriendLancer/FriendLancer/FriendLancer/Model/Post.swift; sourceTree = "<absolute>"; };
+		3D03298623C5D86D004522CA /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		3DF85BE023C391C0006296AC /* ForumsForTopicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumsForTopicTableViewController.swift; sourceTree = "<group>"; };
 		3DF85BE223C39261006296AC /* ForumPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumPostCell.swift; sourceTree = "<group>"; };
 		3DF9072F23BF2B6B00D24A6B /* FriendLancer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendLancer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,9 +81,20 @@
 			children = (
 				3D01F62723BF528600955EAA /* Model.swift */,
 				3D01F62923BF52E500955EAA /* ModelFirebase.swift */,
+				3D03298323C5D336004522CA /* Post.swift */,
 				3D01F62B23BF537800955EAA /* Forum.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3D03298523C5D848004522CA /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				3DF85BE223C39261006296AC /* ForumPostCell.swift */,
+				3DF85BE023C391C0006296AC /* ForumsForTopicTableViewController.swift */,
+				3D03298623C5D86D004522CA /* NewPostViewController.swift */,
+			);
+			path = Posts;
 			sourceTree = "<group>";
 		};
 		3DF9072623BF2B6B00D24A6B = {
@@ -103,6 +118,7 @@
 		3DF9073123BF2B6B00D24A6B /* FriendLancer */ = {
 			isa = PBXGroup;
 			children = (
+				3D03298523C5D848004522CA /* Posts */,
 				3D01F62623BF525B00955EAA /* Model */,
 				3DF9075323BF428300D24A6B /* GoogleService-Info.plist */,
 				3DF9075223BF40E300D24A6B /* MeetPlaces */,
@@ -126,8 +142,6 @@
 				3DF9074E23BF3E9000D24A6B /* ForumTopicsCell.swift */,
 				3DF9074A23BF39B800D24A6B /* ForumsTableViewController.swift */,
 				3D01F62D23BF5B7F00955EAA /* NewForumViewController.swift */,
-				3DF85BE023C391C0006296AC /* ForumsForTopicTableViewController.swift */,
-				3DF85BE223C39261006296AC /* ForumPostCell.swift */,
 			);
 			path = Forums;
 			sourceTree = "<group>";
@@ -278,6 +292,7 @@
 				3D01F62E23BF5B7F00955EAA /* NewForumViewController.swift in Sources */,
 				3DF9073723BF2B6B00D24A6B /* ViewController.swift in Sources */,
 				3DF9074D23BF3A5700D24A6B /* MeetPlaceTableViewController.swift in Sources */,
+				3D03298423C5D336004522CA /* Post.swift in Sources */,
 				3DF9073323BF2B6B00D24A6B /* AppDelegate.swift in Sources */,
 				3DF9074923BF388800D24A6B /* MyZoneViewController.swift in Sources */,
 				3DF85BE323C39261006296AC /* ForumPostCell.swift in Sources */,
@@ -286,6 +301,7 @@
 				3D01F62A23BF52E500955EAA /* ModelFirebase.swift in Sources */,
 				3D01F62823BF528600955EAA /* Model.swift in Sources */,
 				3D01F62C23BF537800955EAA /* Forum.swift in Sources */,
+				3D03298723C5D86D004522CA /* NewPostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

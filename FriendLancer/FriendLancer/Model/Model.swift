@@ -20,20 +20,32 @@ class Model {
         ModelEvents.ForumDataNotification.post();
     }
     
+    func add(post:Post) {
+        modelFirebase.add(post: post)
+        ModelEvents.PostDataNotification.post();
+    }
+    
     func getAllForums(callback:@escaping ([Forum]?)->Void){
         modelFirebase.getAllForums(callback: callback)
     }
+    
+    func getAllPosts(callback:@escaping ([Post]?)->Void){
+        modelFirebase.getAllPosts(callback: callback)
+    }
+    
 
 }
 
 class ModelEvents{
     static let ForumDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.ForumDataNotification");
+    static let PostDataNotification = ModelEventsTemplate(name:"com.nitzanInbar.PostDataNotification")
     
     static func removeObserver(observer:Any){
         NotificationCenter.default.removeObserver(observer)
     }
     private init(){}
 }
+
 
 class ModelEventsTemplate{
     let notificationName:String;
