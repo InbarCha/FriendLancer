@@ -9,20 +9,17 @@
 import Foundation
 
 class Forum {
-    var id:String = ""
     var forumTopic:String = ""
     var forumTopicAvatar:String = ""
     
-    init(id:String, forumTopic:String, forumTopicAvatar:String) {
+    init(forumTopic:String, forumTopicAvatar:String) {
         self.forumTopic = forumTopic;
         self.forumTopicAvatar = forumTopicAvatar;
-        self.id = id;
     }
     
     init(json:[String:Any]){
         self.forumTopic = json["forumTopic"] as! String;
         self.forumTopicAvatar = json["forumTopicAvatar"] as! String;
-        self.id = json["id"] as! String;
     }
     
     
@@ -30,7 +27,6 @@ class Forum {
         var json = [String:String]();
         json["forumTopic"] = self.forumTopic
         json["forumTopicAvatar"] = self.forumTopicAvatar
-        json["id"] = self.id
         return json;
     }
     

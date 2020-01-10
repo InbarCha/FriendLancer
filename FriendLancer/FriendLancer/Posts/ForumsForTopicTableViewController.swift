@@ -28,12 +28,12 @@ class ForumsForTopicTableViewController: UITableViewController {
 
     
     func reloadData(){
-        Model.instance.getAllPosts { (_data:[Post]?) in
+        Model.instance.getAllPosts(callback: { (_data:[Post]?) in
             if (_data != nil) {
                 self.data = _data!;
                 self.tableView.reloadData();
             }
-        };
+        }, forumName: forum!.forumTopic)
     }
     
     // MARK: - Table view data source
@@ -47,7 +47,32 @@ class ForumsForTopicTableViewController: UITableViewController {
         return data.count
     }
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:ForumPostCell = tableView.dequeueReusableCell(withIdentifier: "ForumPostCell", for: indexPath) as! ForumPostCell
+
+        // Configure the cell...
+        let post = data[indexPath.row]
+        cell.titleLbl.text = post.postTitle
+        cell.meetingPlaceLbl.text = post.meetingPlace
+        return cell
+    }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selected = data[indexPath.row]
+        performSegue(withIdentifier: "ToPostSegue", sender: self)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ToPostSegue"){
+            let vc:ForumPostViewController = segue.destination as! ForumPostViewController
+            vc.post = selected
+        }
+        if (segue.identifier == "toNewForumPostSegue") {
+            let vc:NewPostViewController = segue.destination as! NewPostViewController
+            vc.forumTopic = self.forum!.forumTopic
+        }
+    }
         
 
     /*

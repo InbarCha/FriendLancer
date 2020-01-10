@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ForumsTableViewController: UITableViewController {
     var data = [Forum]()
@@ -55,6 +56,10 @@ class ForumsTableViewController: UITableViewController {
         // Configure the cell...
         let forum = data[indexPath.row]
         cell.ForumTopicLbl.text = forum.forumTopic
+        
+        if (forum.forumTopicAvatar != "") {
+            cell.ForumTopicImage.kf.setImage(with: URL(string: forum.forumTopicAvatar))
+        }
         cell.ForumTopicImage.image = UIImage(named: "avatar")
         return cell
     }
@@ -67,7 +72,7 @@ class ForumsTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ToForumPostsSegue"){
             let vc:ForumsForTopicTableViewController = segue.destination as! ForumsForTopicTableViewController
-            vc.title = selected?.forumTopic
+            vc.title = selected!.forumTopic + String(" Posts")
             vc.forum = selected
         }
     }

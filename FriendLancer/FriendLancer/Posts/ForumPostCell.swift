@@ -10,8 +10,9 @@ import UIKit
 
 class ForumPostCell: UITableViewCell {
     
-    @IBOutlet weak var actualSubjectLbk: UILabel!
-    @IBOutlet weak var actualMeetingPlaceLbl: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var meetingPlaceLbl: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib();

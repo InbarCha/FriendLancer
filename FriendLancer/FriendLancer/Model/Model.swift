@@ -29,11 +29,13 @@ class Model {
         modelFirebase.getAllForums(callback: callback)
     }
     
-    func getAllPosts(callback:@escaping ([Post]?)->Void){
-        modelFirebase.getAllPosts(callback: callback)
+    func getAllPosts(callback:@escaping ([Post]?)->Void, forumName:String){
+        modelFirebase.getAllPosts(callback: callback, forumName: forumName)
     }
     
-
+    func saveImage(image:UIImage, callback: @escaping (String)->Void){
+        FirebaseStorage.saveImage(image: image, callback: callback)
+    }
 }
 
 class ModelEvents{

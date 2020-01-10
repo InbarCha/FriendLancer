@@ -27,9 +27,15 @@ UINavigationControllerDelegate{
     
     
     @IBAction func Save(_ sender: Any) {
-        let forum = Forum(id: "0", forumTopic: self.ForumTopicNameInput.text!, forumTopicAvatar:"");
+        if let image = selectedForumIcon {
+            Model.instance.saveImage(image: image) { (url) in
+                print("saved image url \(url)")
+                
+                let forum = Forum(forumTopic: self.ForumTopicNameInput.text!, forumTopicAvatar:url);
                 Model.instance.add(forum: forum);
                 self.navigationController?.popViewController(animated: true);
+            }
+        }
     }
     
     
