@@ -16,6 +16,7 @@ UINavigationControllerDelegate{
     @IBOutlet weak var ForumIcon: UIImageView!
     @IBOutlet weak var chooseIconBtn: UIButton!
     @IBOutlet weak var saveNewForumBtn: UIButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var selectedForumIcon:UIImage?
     
@@ -23,10 +24,14 @@ UINavigationControllerDelegate{
         super.viewDidLoad()
         BannerImage.image = UIImage(named: "NewForumBannerImage2")
         ForumIcon.image = UIImage(named:"avatar")
+        spinner.isHidden = true
+        saveNewForumBtn.isEnabled = true
     }
     
     
     @IBAction func Save(_ sender: Any) {
+        spinner.isHidden = false
+        saveNewForumBtn.isEnabled = false
         if let image = selectedForumIcon {
             Model.instance.saveImage(image: image) { (url) in
                 print("saved image url \(url)")

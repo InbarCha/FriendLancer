@@ -15,6 +15,19 @@
 		3D01F62A23BF52E500955EAA /* ModelFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D01F62923BF52E500955EAA /* ModelFirebase.swift */; };
 		3D01F62C23BF537800955EAA /* Forum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D01F62B23BF537800955EAA /* Forum.swift */; };
 		3D01F62E23BF5B7F00955EAA /* NewForumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D01F62D23BF5B7F00955EAA /* NewForumViewController.swift */; };
+		3D02E3A923CB381000D71471 /* CommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02E3A823CB381000D71471 /* CommentsTableViewController.swift */; };
+		3D02E3AB23CB382A00D71471 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02E3AA23CB382A00D71471 /* CommentCell.swift */; };
+		3D02E3AD23CB38E100D71471 /* NewCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02E3AC23CB38E100D71471 /* NewCommentViewController.swift */; };
+		3D02E3AF23CB3ACB00D71471 /* EditCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02E3AE23CB3ACB00D71471 /* EditCommentViewController.swift */; };
+		3D02E3B123CB3E2300D71471 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02E3B023CB3E2300D71471 /* Comment.swift */; };
+		3D02E3B323CB654A00D71471 /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02E3B223CB654A00D71471 /* EditPostViewController.swift */; };
+		3D02E3B523CB768900D71471 /* MeetPlaceTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02E3B423CB768900D71471 /* MeetPlaceTypeCell.swift */; };
+		3D02E3B723CB77E000D71471 /* MeetPlacesTypesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02E3B623CB77E000D71471 /* MeetPlacesTypesTableViewController.swift */; };
+		3D02E3B923CB784100D71471 /* MeetPlaceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02E3B823CB784100D71471 /* MeetPlaceType.swift */; };
+		3D02E3BB23CB78D100D71471 /* MeetPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02E3BA23CB78D100D71471 /* MeetPlace.swift */; };
+		3D02E3BD23CB7F5D00D71471 /* NewMeetPlaceTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02E3BC23CB7F5D00D71471 /* NewMeetPlaceTypeViewController.swift */; };
+		3D02E3BF23CB856600D71471 /* MeetPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02E3BE23CB856600D71471 /* MeetPlaceCell.swift */; };
+		3D02E3C123CB893000D71471 /* NewMeetPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02E3C023CB893000D71471 /* NewMeetPlaceViewController.swift */; };
 		3D03298723C5D86D004522CA /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D03298623C5D86D004522CA /* NewPostViewController.swift */; };
 		3DF85BE123C391C0006296AC /* ForumsForTopicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF85BE023C391C0006296AC /* ForumsForTopicTableViewController.swift */; };
 		3DF85BE323C39261006296AC /* ForumPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF85BE223C39261006296AC /* ForumPostCell.swift */; };
@@ -40,6 +53,19 @@
 		3D01F62923BF52E500955EAA /* ModelFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFirebase.swift; sourceTree = "<group>"; };
 		3D01F62B23BF537800955EAA /* Forum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forum.swift; sourceTree = "<group>"; };
 		3D01F62D23BF5B7F00955EAA /* NewForumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewForumViewController.swift; sourceTree = "<group>"; };
+		3D02E3A823CB381000D71471 /* CommentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewController.swift; sourceTree = "<group>"; };
+		3D02E3AA23CB382A00D71471 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		3D02E3AC23CB38E100D71471 /* NewCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCommentViewController.swift; sourceTree = "<group>"; };
+		3D02E3AE23CB3ACB00D71471 /* EditCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCommentViewController.swift; sourceTree = "<group>"; };
+		3D02E3B023CB3E2300D71471 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		3D02E3B223CB654A00D71471 /* EditPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
+		3D02E3B423CB768900D71471 /* MeetPlaceTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetPlaceTypeCell.swift; sourceTree = "<group>"; };
+		3D02E3B623CB77E000D71471 /* MeetPlacesTypesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetPlacesTypesTableViewController.swift; sourceTree = "<group>"; };
+		3D02E3B823CB784100D71471 /* MeetPlaceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetPlaceType.swift; sourceTree = "<group>"; };
+		3D02E3BA23CB78D100D71471 /* MeetPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetPlace.swift; sourceTree = "<group>"; };
+		3D02E3BC23CB7F5D00D71471 /* NewMeetPlaceTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMeetPlaceTypeViewController.swift; sourceTree = "<group>"; };
+		3D02E3BE23CB856600D71471 /* MeetPlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetPlaceCell.swift; sourceTree = "<group>"; };
+		3D02E3C023CB893000D71471 /* NewMeetPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMeetPlaceViewController.swift; sourceTree = "<group>"; };
 		3D03298623C5D86D004522CA /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		3DF85BE023C391C0006296AC /* ForumsForTopicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumsForTopicTableViewController.swift; sourceTree = "<group>"; };
 		3DF85BE223C39261006296AC /* ForumPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumPostCell.swift; sourceTree = "<group>"; };
@@ -88,8 +114,22 @@
 				3D01F62B23BF537800955EAA /* Forum.swift */,
 				3D00E5C923C866480050CA49 /* Post.swift */,
 				3D00E5CD23C89F040050CA49 /* FirebaseStorage.swift */,
+				3D02E3B023CB3E2300D71471 /* Comment.swift */,
+				3D02E3B823CB784100D71471 /* MeetPlaceType.swift */,
+				3D02E3BA23CB78D100D71471 /* MeetPlace.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3D02E3A723CB37F000D71471 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				3D02E3A823CB381000D71471 /* CommentsTableViewController.swift */,
+				3D02E3AA23CB382A00D71471 /* CommentCell.swift */,
+				3D02E3AC23CB38E100D71471 /* NewCommentViewController.swift */,
+				3D02E3AE23CB3ACB00D71471 /* EditCommentViewController.swift */,
+			);
+			path = Comments;
 			sourceTree = "<group>";
 		};
 		3D03298523C5D848004522CA /* Posts */ = {
@@ -99,6 +139,7 @@
 				3DF85BE023C391C0006296AC /* ForumsForTopicTableViewController.swift */,
 				3D03298623C5D86D004522CA /* NewPostViewController.swift */,
 				3D00E5CB23C8680E0050CA49 /* ForumPostViewController.swift */,
+				3D02E3B223CB654A00D71471 /* EditPostViewController.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -124,6 +165,7 @@
 		3DF9073123BF2B6B00D24A6B /* FriendLancer */ = {
 			isa = PBXGroup;
 			children = (
+				3D02E3A723CB37F000D71471 /* Comments */,
 				3D03298523C5D848004522CA /* Posts */,
 				3D01F62623BF525B00955EAA /* Model */,
 				3DF9075323BF428300D24A6B /* GoogleService-Info.plist */,
@@ -164,6 +206,11 @@
 			isa = PBXGroup;
 			children = (
 				3DF9074C23BF3A5700D24A6B /* MeetPlaceTableViewController.swift */,
+				3D02E3B423CB768900D71471 /* MeetPlaceTypeCell.swift */,
+				3D02E3B623CB77E000D71471 /* MeetPlacesTypesTableViewController.swift */,
+				3D02E3BC23CB7F5D00D71471 /* NewMeetPlaceTypeViewController.swift */,
+				3D02E3BE23CB856600D71471 /* MeetPlaceCell.swift */,
+				3D02E3C023CB893000D71471 /* NewMeetPlaceViewController.swift */,
 			);
 			path = MeetPlaces;
 			sourceTree = "<group>";
@@ -293,23 +340,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D02E3B923CB784100D71471 /* MeetPlaceType.swift in Sources */,
+				3D02E3AB23CB382A00D71471 /* CommentCell.swift in Sources */,
+				3D02E3BB23CB78D100D71471 /* MeetPlace.swift in Sources */,
 				3DF9074B23BF39B800D24A6B /* ForumsTableViewController.swift in Sources */,
+				3D02E3AF23CB3ACB00D71471 /* EditCommentViewController.swift in Sources */,
 				3DF9074F23BF3E9000D24A6B /* ForumTopicsCell.swift in Sources */,
 				3D01F62E23BF5B7F00955EAA /* NewForumViewController.swift in Sources */,
+				3D02E3B323CB654A00D71471 /* EditPostViewController.swift in Sources */,
+				3D02E3BD23CB7F5D00D71471 /* NewMeetPlaceTypeViewController.swift in Sources */,
 				3DF9073723BF2B6B00D24A6B /* ViewController.swift in Sources */,
 				3DF9074D23BF3A5700D24A6B /* MeetPlaceTableViewController.swift in Sources */,
 				3DF9073323BF2B6B00D24A6B /* AppDelegate.swift in Sources */,
 				3DF9074923BF388800D24A6B /* MyZoneViewController.swift in Sources */,
+				3D02E3B123CB3E2300D71471 /* Comment.swift in Sources */,
 				3DF85BE323C39261006296AC /* ForumPostCell.swift in Sources */,
+				3D02E3C123CB893000D71471 /* NewMeetPlaceViewController.swift in Sources */,
+				3D02E3AD23CB38E100D71471 /* NewCommentViewController.swift in Sources */,
 				3D00E5CC23C8680E0050CA49 /* ForumPostViewController.swift in Sources */,
 				3DF85BE123C391C0006296AC /* ForumsForTopicTableViewController.swift in Sources */,
 				3D00E5CA23C866480050CA49 /* Post.swift in Sources */,
+				3D02E3B723CB77E000D71471 /* MeetPlacesTypesTableViewController.swift in Sources */,
+				3D02E3B523CB768900D71471 /* MeetPlaceTypeCell.swift in Sources */,
 				3DF9073523BF2B6B00D24A6B /* SceneDelegate.swift in Sources */,
+				3D02E3BF23CB856600D71471 /* MeetPlaceCell.swift in Sources */,
 				3D01F62A23BF52E500955EAA /* ModelFirebase.swift in Sources */,
 				3D01F62823BF528600955EAA /* Model.swift in Sources */,
 				3D00E5CE23C89F040050CA49 /* FirebaseStorage.swift in Sources */,
 				3D01F62C23BF537800955EAA /* Forum.swift in Sources */,
 				3D03298723C5D86D004522CA /* NewPostViewController.swift in Sources */,
+				3D02E3A923CB381000D71471 /* CommentsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

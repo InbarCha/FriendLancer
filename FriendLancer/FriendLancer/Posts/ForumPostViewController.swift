@@ -11,7 +11,7 @@ import UIKit
 class ForumPostViewController: UIViewController {
     
     var post:Post?
-
+    var observer:Any?;
     
     @IBOutlet weak var postTitleLbl: UILabel!
     @IBOutlet weak var subjectLbl: UILabel!
@@ -58,19 +58,45 @@ class ForumPostViewController: UIViewController {
     @IBOutlet weak var fourLbl: UILabel!
     @IBOutlet weak var fiveLbl: UILabel!
     
+    @IBOutlet weak var noParticipantsImage: UIImageView!
+    
+    func reloadData(){
+        Model.instance.getPostById(callback: { (_data:Post?) in
+            if(_data != nil) {
+                self.post = _data!
+                self.postTitleLbl.text = _data!.postTitle
+                self.subjectLbl.text = _data!.postSubject
+                self.MeetingPlaceLbl.text = _data!.meetingPlace
+                
+                
+            }
+        }, postId: post!.postId)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setView()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setView()
+    }
+    
+    func setView() {
+        observer = ModelEvents.PostDataNotification.observe{
+            self.reloadData();
+        }
         
-        self.postTitleLbl.text = post?.postTitle
-        self.subjectLbl.text = post?.postSubject
-        self.MeetingPlaceLbl.text = post?.meetingPlace
+        reloadData();
         
         //first participant
         firstParticipantQuestion.isHidden = true
         firstParticipantV.isHidden = true
         firstParticipantX.isHidden = true
         oneLbl.isHidden = true
+        noParticipantsImage.isHidden = true
         
         if (post?.participant1Name != "") {
             firstParticipantName.text = post?.participant1Name
@@ -175,9 +201,33 @@ class ForumPostViewController: UIViewController {
                 fifthParticipantQuestion.isHidden = false
             }
         }
+        
+        if (post?.participant1Name == "" && post?.participant2Name == "" && post?.participant3Name == "" &&
+            post?.participant4Name == "" && post?.participant5Name == "") {
+            noParticipantsImage.isHidden = false
+        }
     }
     
-
+    @IBAction func arrivingBtnPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func MaybeArrivingBtnPressed(_ sender: Any) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toCommentsSegue"){
+            let vc:CommentsTableViewController = segue.destination as! CommentsTableViewController
+            vc.post = self.post
+        }
+        if (segue.identifier == "toEditPostSegue") {
+            let vc:EditPostViewController = segue.destination as! EditPostViewController
+            vc.post = self.post
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 

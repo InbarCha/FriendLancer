@@ -15,6 +15,8 @@ class Post {
     var meetingPlace:String = ""
     var forumName:String = ""
     
+    var postId:String = ""
+    
     var participant1Name:String = ""
     var participant2Name:String = ""
     var participant3Name:String = ""
@@ -57,6 +59,10 @@ class Post {
         self.participant3Status = participant3Status
         self.participant4Status = participant4Status
         self.participant5Status = participant5Status
+        
+        //generate post ID
+        let identifier = UUID()
+        self.postId = identifier.uuidString
     }
     
     init(json:[String:Any]){
@@ -79,6 +85,7 @@ class Post {
         self.participant3Status = json["participant3Status"] as! String;
         self.participant4Status = json["participant4Status"] as! String;
         self.participant5Status = json["participant5Status"] as! String;
+        self.postId = json["postId"] as! String;
     }
     
     func toJson() -> [String:String] {
@@ -102,6 +109,7 @@ class Post {
         json["participant3Status"] = self.participant3Status
         json["participant4Status"] = self.participant4Status
         json["participant5Status"] = self.participant5Status
+        json["postId"] = self.postId
         return json;
     }
     

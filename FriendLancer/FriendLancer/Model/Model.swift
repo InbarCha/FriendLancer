@@ -25,12 +25,53 @@ class Model {
         ModelEvents.PostDataNotification.post();
     }
     
+    func add(comment:Comment) {
+        modelFirebase.add(comment: comment)
+        ModelEvents.CommentDataNotification.post();
+    }
+    
+    func add(meetPlace:MeetPlace) {
+        modelFirebase.add(meetPlace: meetPlace)
+        ModelEvents.MeetPlacesDataNotification.post();
+    }
+    
+    func add(meetPlaceType:MeetPlaceType) {
+        modelFirebase.add(meetPlaceType: meetPlaceType)
+        ModelEvents.MeetPlacesTypeDataNotification.post();
+    }
+    
+    func update(comment:Comment) {
+        modelFirebase.update(comment:comment)
+        ModelEvents.CommentDataNotification.post();
+    }
+    
+    func update(post:Post) {
+        modelFirebase.update(post:post)
+        ModelEvents.PostDataNotification.post();
+    }
+    
+    func getPostById(callback:@escaping (Post?)->Void, postId:String){
+        modelFirebase.getPostById(callback: callback, postId: postId)
+    }
+    
     func getAllForums(callback:@escaping ([Forum]?)->Void){
         modelFirebase.getAllForums(callback: callback)
     }
     
+    func getAllMeetingPlaces(callback:@escaping ([MeetPlace]?)->Void, meetPlaceTypeId:String) {
+        modelFirebase.getAllMeetingPlaces(callback: callback, meetPlaceTypeId:meetPlaceTypeId)
+    }
+    
+    func getAllMeetingPlaceTypes(callback:@escaping ([MeetPlaceType]?)->Void){
+        modelFirebase.getAllMeetingPlaceTypes(callback: callback)
+    }
+    
     func getAllPosts(callback:@escaping ([Post]?)->Void, forumName:String){
         modelFirebase.getAllPosts(callback: callback, forumName: forumName)
+    }
+    
+    func getAllComments(callback:@escaping ([Comment]?)->Void, postId:String) {
+        modelFirebase.getAllComments(callback: callback, postId: postId)
     }
     
     func saveImage(image:UIImage, callback: @escaping (String)->Void){
@@ -41,6 +82,9 @@ class Model {
 class ModelEvents{
     static let ForumDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.ForumDataNotification");
     static let PostDataNotification = ModelEventsTemplate(name:"com.nitzanInbar.PostDataNotification")
+    static let CommentDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.CommentDataNotification")
+    static let MeetPlacesTypeDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.MeetPlacesTypeDataNotification")
+    static let MeetPlacesDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.MeetPlacesDataNotification")
     
     static func removeObserver(observer:Any){
         NotificationCenter.default.removeObserver(observer)

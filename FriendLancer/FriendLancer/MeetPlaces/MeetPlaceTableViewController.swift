@@ -10,29 +10,72 @@ import UIKit
 
 class MeetPlaceTableViewController: UITableViewController {
 
+    var meetPlaceType:MeetPlaceType?
+    var data = [MeetPlace]()
+    var observer:Any?
+    var selected:MeetPlace?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        if (meetPlaceType != nil) {
+            self.title = meetPlaceType?.type
+        }
+        
+        observer = ModelEvents.MeetPlacesDataNotification.observe{
+            self.reloadData();
+        }
+        
+        reloadData();
+    }
+    
+    func reloadData(){
+        Model.instance.getAllMeetingPlaces(callback: { (_data:[MeetPlace]?) in
+            if (_data != nil) {
+                self.data = _data!;
+                self.tableView.reloadData();
+            }
+        }, meetPlaceTypeId: meetPlaceType!.typeId)
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return data.count
     }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:MeetPlaceCell = tableView.dequeueReusableCell(withIdentifier: "MeetPlaceCell", for: indexPath) as! MeetPlaceCell
 
-    /*
+        // Configure the cell...
+        let meetPlace = data[indexPath.row]
+        cell.name.text = meetPlace.name
+        cell.address.text = meetPlace.address
+        cell.city.text = meetPlace.city
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selected = data[indexPath.row]
+        performSegue(withIdentifier: "toNewMeetPlaceSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toNewMeetPlaceSegue"){
+            let vc:NewMeetPlaceViewController = segue.destination as! NewMeetPlaceViewController
+            vc.meetPlaceType = self.meetPlaceType!
+        }
+    }
+    
+    
+
+    /*s
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 

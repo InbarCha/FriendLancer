@@ -1,24 +1,24 @@
 //
-//  ForumsTableViewController.swift
+//  MeetPlacesTypesTableViewController.swift
 //  FriendLancer
 //
-//  Created by Studio on 03/01/2020.
+//  Created by Studio on 12/01/2020.
 //  Copyright © 2020 Nitzan & Inbar. All rights reserved.
 //
 
 import UIKit
-import Kingfisher
 
-class ForumsTableViewController: UITableViewController {
-    var data = [Forum]()
-    @IBOutlet weak var addNewForumBtn: UIBarButtonItem!
+class MeetPlacesTypesTableViewController: UITableViewController {
     
-    var observer:Any?;
-    var selected:Forum?
+    var data = [MeetPlaceType]()
+    
+    var observer:Any?
+    var selected:MeetPlaceType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        observer = ModelEvents.ForumDataNotification.observe{
+        
+        observer = ModelEvents.MeetPlacesTypeDataNotification.observe{
             self.reloadData();
         }
         
@@ -26,9 +26,19 @@ class ForumsTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    func reloadData(){
+        Model.instance.getAllMeetingPlaceTypes(callback: { (_data:[MeetPlaceType]?) in
+            if (_data != nil) {
+                self.data = _data!;
+                self.tableView.reloadData();
+            }
+        })
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1;
+        // #warning Incomplete implementation, return the number of sections
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,50 +46,41 @@ class ForumsTableViewController: UITableViewController {
         return data.count
     }
 
-    func reloadData(){
-        Model.instance.getAllForums { (_data:[Forum]?) in
-            if (_data != nil) {
-                self.data = _data!;
-                self.tableView.reloadData();
-            }
-        };
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
-        
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:ForumTopicsCell = tableView.dequeueReusableCell(withIdentifier: "ForumTopicsCell", for: indexPath) as! ForumTopicsCell
+        let cell:MeetPlaceTypeCell = tableView.dequeueReusableCell(withIdentifier: "MeetPlaceTypeCell", for: indexPath) as! MeetPlaceTypeCell
 
         // Configure the cell...
-        let forum = data[indexPath.row]
-        cell.ForumTopicLbl.text = forum.forumTopic
+        let meetPlaceType = data[indexPath.row]
+        cell.meetPlaceTypeLbl.text = meetPlaceType.type
         
-        if (forum.forumTopicAvatar != "") {
-            cell.ForumTopicImage.kf.setImage(with: URL(string: forum.forumTopicAvatar))
-        }
-        else {
-            cell.ForumTopicImage.image = UIImage(named: "avatar")
-        }
+ 
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selected = data[indexPath.row]
-        performSegue(withIdentifier: "ToForumPostsSegue", sender: self)
+        performSegue(withIdentifier: "toMeetPlacesSegue", sender: self)
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "ToForumPostsSegue"){
-            let vc:ForumsForTopicTableViewController = segue.destination as! ForumsForTopicTableViewController
-            vc.title = selected!.forumTopic + String(" Posts")
-            vc.forum = selected
+        if (segue.identifier == "toMeetPlacesSegue"){
+            let vc:MeetPlaceTableViewController = segue.destination as! MeetPlaceTableViewController
+            vc.meetPlaceType = selected
         }
     }
     
-    
+    /*
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
+        return cell
+    }
+    */
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
