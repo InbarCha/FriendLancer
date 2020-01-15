@@ -42,6 +42,10 @@
 		3DF9074D23BF3A5700D24A6B /* MeetPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9074C23BF3A5700D24A6B /* MeetPlaceTableViewController.swift */; };
 		3DF9074F23BF3E9000D24A6B /* ForumTopicsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9074E23BF3E9000D24A6B /* ForumTopicsCell.swift */; };
 		3DF9075423BF428300D24A6B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DF9075323BF428300D24A6B /* GoogleService-Info.plist */; };
+		5FACD4F823CF451D00806C45 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FACD4F723CF451D00806C45 /* User.swift */; };
+		5FDFC9E923CF385800AF433F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDFC9E823CF385800AF433F /* RegisterViewController.swift */; };
+		5FE7417923CF1CD10032BFD1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7417823CF1CD10032BFD1 /* LoginViewController.swift */; };
+		5FE7417B23CF243D0032BFD1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE7417A23CF243D0032BFD1 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +86,10 @@
 		3DF9074C23BF3A5700D24A6B /* MeetPlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetPlaceTableViewController.swift; sourceTree = "<group>"; };
 		3DF9074E23BF3E9000D24A6B /* ForumTopicsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumTopicsCell.swift; sourceTree = "<group>"; };
 		3DF9075323BF428300D24A6B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5FACD4F723CF451D00806C45 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5FDFC9E823CF385800AF433F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		5FE7417823CF1CD10032BFD1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5FE7417A23CF243D0032BFD1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		EB6EB9FDA21F809B594C3201 /* Pods-FriendLancer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendLancer.release.xcconfig"; path = "Target Support Files/Pods-FriendLancer/Pods-FriendLancer.release.xcconfig"; sourceTree = "<group>"; };
 		FF799659AD8E28092A415C3F /* Pods-FriendLancer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendLancer.debug.xcconfig"; path = "Target Support Files/Pods-FriendLancer/Pods-FriendLancer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FE7417B23CF243D0032BFD1 /* WebKit.framework in Frameworks */,
 				1614BCC77C3587A5A8B0C3A6 /* Pods_FriendLancer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +110,7 @@
 		04FF7F69794D8EEC2F80A479 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5FE7417A23CF243D0032BFD1 /* WebKit.framework */,
 				2F246FAE97693BF037C192FA /* Pods_FriendLancer.framework */,
 			);
 			name = Frameworks;
@@ -117,6 +127,7 @@
 				3D02E3B023CB3E2300D71471 /* Comment.swift */,
 				3D02E3B823CB784100D71471 /* MeetPlaceType.swift */,
 				3D02E3BA23CB78D100D71471 /* MeetPlace.swift */,
+				5FACD4F723CF451D00806C45 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,6 +176,7 @@
 		3DF9073123BF2B6B00D24A6B /* FriendLancer */ = {
 			isa = PBXGroup;
 			children = (
+				5FDFC9E723CF383800AF433F /* Users */,
 				3D02E3A723CB37F000D71471 /* Comments */,
 				3D03298523C5D848004522CA /* Posts */,
 				3D01F62623BF525B00955EAA /* Model */,
@@ -213,6 +225,15 @@
 				3D02E3C023CB893000D71471 /* NewMeetPlaceViewController.swift */,
 			);
 			path = MeetPlaces;
+			sourceTree = "<group>";
+		};
+		5FDFC9E723CF383800AF433F /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				5FE7417823CF1CD10032BFD1 /* LoginViewController.swift */,
+				5FDFC9E823CF385800AF433F /* RegisterViewController.swift */,
+			);
+			path = Users;
 			sourceTree = "<group>";
 		};
 		D1B580C78679E5A24E142FA5 /* Pods */ = {
@@ -353,6 +374,7 @@
 				3DF9074D23BF3A5700D24A6B /* MeetPlaceTableViewController.swift in Sources */,
 				3DF9073323BF2B6B00D24A6B /* AppDelegate.swift in Sources */,
 				3DF9074923BF388800D24A6B /* MyZoneViewController.swift in Sources */,
+				5FE7417923CF1CD10032BFD1 /* LoginViewController.swift in Sources */,
 				3D02E3B123CB3E2300D71471 /* Comment.swift in Sources */,
 				3DF85BE323C39261006296AC /* ForumPostCell.swift in Sources */,
 				3D02E3C123CB893000D71471 /* NewMeetPlaceViewController.swift in Sources */,
@@ -366,10 +388,12 @@
 				3D02E3BF23CB856600D71471 /* MeetPlaceCell.swift in Sources */,
 				3D01F62A23BF52E500955EAA /* ModelFirebase.swift in Sources */,
 				3D01F62823BF528600955EAA /* Model.swift in Sources */,
+				5FDFC9E923CF385800AF433F /* RegisterViewController.swift in Sources */,
 				3D00E5CE23C89F040050CA49 /* FirebaseStorage.swift in Sources */,
 				3D01F62C23BF537800955EAA /* Forum.swift in Sources */,
 				3D03298723C5D86D004522CA /* NewPostViewController.swift in Sources */,
 				3D02E3A923CB381000D71471 /* CommentsTableViewController.swift in Sources */,
+				5FACD4F823CF451D00806C45 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

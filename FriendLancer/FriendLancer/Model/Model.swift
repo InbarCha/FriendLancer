@@ -40,6 +40,10 @@ class Model {
         ModelEvents.MeetPlacesTypeDataNotification.post();
     }
     
+    func add(user:User) {
+        modelFirebase.add(user:user)
+    }
+    
     func update(comment:Comment) {
         modelFirebase.update(comment:comment)
         ModelEvents.CommentDataNotification.post();
@@ -48,6 +52,10 @@ class Model {
     func update(post:Post) {
         modelFirebase.update(post:post)
         ModelEvents.PostDataNotification.post();
+    }
+    
+    func getUserByEmail(callback:@escaping (User?)->Void, email:String) {
+        modelFirebase.getUserByEmail(callback: callback, email: email)
     }
     
     func getPostById(callback:@escaping (Post?)->Void, postId:String){
@@ -85,7 +93,7 @@ class ModelEvents{
     static let CommentDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.CommentDataNotification")
     static let MeetPlacesTypeDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.MeetPlacesTypeDataNotification")
     static let MeetPlacesDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.MeetPlacesDataNotification")
-    
+
     static func removeObserver(observer:Any){
         NotificationCenter.default.removeObserver(observer)
     }

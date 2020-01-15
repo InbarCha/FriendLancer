@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ForumsForTopicTableViewController: UITableViewController {
 
@@ -15,6 +16,8 @@ class ForumsForTopicTableViewController: UITableViewController {
     
     var observer:Any?;
     var selected:Post?
+    
+    var handle:AuthStateDidChangeListenerHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,15 @@ class ForumsForTopicTableViewController: UITableViewController {
         reloadData();
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+          // ...
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
     
     func reloadData(){
         Model.instance.getAllPosts(callback: { (_data:[Post]?) in

@@ -81,11 +81,25 @@ class ModelFirebase{
     }
     
     
+    func add(user:User) {
+        let db = Firestore.firestore()
+        // Add a new document with a generated ID
+        var ref: DocumentReference? = nil
+
+        ref = db.collection("Users").addDocument(data: user.toJson(), completion: { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Forum added with ID: \(ref!.documentID)")
+                }
+        })
+    }
+    
     func update(comment:Comment) {
         let db = Firestore.firestore()
         var ref: DocumentReference? = nil
         
-        db.collection("Comments").whereField("commentId", isEqualTo: comment.commentId).getDocuments{ (querySnapshot, err) in
+        db.collection("Users").whereField("commentId", isEqualTo: comment.commentId).getDocuments{ (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -169,6 +183,20 @@ class ModelFirebase{
             } else {
                 let post = Post(json: querySnapshot!.documents[querySnapshot!.documents.startIndex].data())
                 callback(post);
+            }
+        };
+    }
+    
+    func getUserByEmail(callback: @escaping (User?)->Void, email: String) {
+        let db = Firestore.firestore()
+        
+        db.collection("Users").whereField("email", isEqualTo: email).getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+                callback(nil);
+            } else {
+                let myUser = User(json: querySnapshot!.documents[querySnapshot!.documents.startIndex].data())
+                callback(myUser);
             }
         };
     }
