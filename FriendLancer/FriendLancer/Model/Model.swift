@@ -42,6 +42,7 @@ class Model {
     
     func add(user:User) {
         modelFirebase.add(user:user)
+        ModelEvents.UserLoggedInDataNotification.post()
     }
     
     func update(comment:Comment) {
@@ -93,7 +94,9 @@ class ModelEvents{
     static let CommentDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.CommentDataNotification")
     static let MeetPlacesTypeDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.MeetPlacesTypeDataNotification")
     static let MeetPlacesDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.MeetPlacesDataNotification")
-
+    static let UserLoggedInDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.UserLoggedInDataNotification")
+    static let UserLoggedOutDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.UserLoggedOutDataNotification")
+    
     static func removeObserver(observer:Any){
         NotificationCenter.default.removeObserver(observer)
     }

@@ -28,25 +28,23 @@ class LoginViewController: UIViewController {
                     guard let strongSelf = self else { return }
                 if let error = error {
                     print("can't sign in!")
-                    let alert = UIAlertController(title: "Alert", message: "Can't login!", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Alert", message: "Can't login, Email or Password are incorrect", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                           switch action.style{
                           case .default:
                                 print("default")
-                                self!.dismiss(animated: true, completion: nil)
 
                           case .cancel:
                                 print("cancel")
-                                self!.dismiss(animated: true, completion: nil)
 
                           case .destructive:
                                 print("destructive")
-                                self!.dismiss(animated: true, completion: nil)
                     }}))
                     self!.spinner.isHidden = true
                     self!.present(alert, animated: true, completion: nil)
                 }
                 else {
+                    ModelEvents.UserLoggedInDataNotification.post()
                     let alert = UIAlertController(title: "Alert", message: "Logged In!", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                           switch action.style{

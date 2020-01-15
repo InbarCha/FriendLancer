@@ -19,16 +19,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var logoutBtn: UIButton!
     
     var handle:AuthStateDidChangeListenerHandle?
+    var observer1:Any?
+    var observer2:Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        observer1 = ModelEvents.UserLoggedInDataNotification.observe{
+            self.userLoggedIn()
+        }
+        
+        observer2 = ModelEvents.UserLoggedOutDataNotification.observe {
+            self.userLoggedOut()
+        }
+        
         setView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            
-        }
         setView()
     }
 
@@ -39,26 +47,36 @@ class ViewController: UIViewController {
         
         if Auth.auth().currentUser != nil {
             //user is logged in
-            LogInBTN.isHidden = true
-            RegisterBTN.isHidden = true
-            logoutBtn.isHidden = false
-            let email = Auth.auth().currentUser?.email
-            Model.instance.getUserByEmail(callback: { (myUser:User?) in
-                if(myUser != nil) {
-                    self.welcomeLbl.text = "Welcome, " + String(myUser!.name)
-                }
-            }, email: email!)
+            userLoggedIn()
         } else {
             //no user is logged in
-            LogInBTN.isHidden = false
-            RegisterBTN.isHidden = false
-            logoutBtn.isHidden = true
+            userLoggedOut()
         }
+    }
+    
+    func userLoggedIn() {
+        LogInBTN.isHidden = true
+        RegisterBTN.isHidden = true
+        logoutBtn.isHidden = false
+        let email = Auth.auth().currentUser?.email
+        Model.instance.getUserByEmail(callback: { (myUser:User?) in
+            if(myUser != nil) {
+                self.welcomeLbl.text = "Welcome, " + String(myUser!.name)
+            }
+        }, email: email!)
+    }
+    
+    func userLoggedOut() {
+        LogInBTN.isHidden = false
+        RegisterBTN.isHidden = false
+        logoutBtn.isHidden = true
+        welcomeLbl.text = ""
     }
     
     @IBAction func logoutBtnPressed(_ sender: Any) {
         do {
             try Auth.auth().signOut()
+            ModelEvents.UserLoggedOutDataNotification.post()
         }
         catch {
             print("cannot log out")
