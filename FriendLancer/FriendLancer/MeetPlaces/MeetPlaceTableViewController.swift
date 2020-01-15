@@ -58,6 +58,13 @@ class MeetPlaceTableViewController: UITableViewController {
         cell.name.text = meetPlace.name
         cell.address.text = meetPlace.address
         cell.city.text = meetPlace.city
+        
+        if (meetPlace.image != "") {
+            cell.myImage.kf.setImage(with: URL(string: meetPlace.image))
+        }
+        else {
+            cell.myImage.image = UIImage(named: "avatar")
+        }
         return cell
     }
     

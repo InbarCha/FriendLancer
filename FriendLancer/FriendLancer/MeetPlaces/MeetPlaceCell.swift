@@ -13,6 +13,7 @@ class MeetPlaceCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var myImage: UIImageView!
     
     
     override func awakeFromNib() {

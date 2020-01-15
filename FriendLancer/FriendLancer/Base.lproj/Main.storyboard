@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R2n-Rp-au6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R2n-Rp-au6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1315,6 +1315,7 @@
                                 <connections>
                                     <outlet property="address" destination="Wqc-L5-3ty" id="nrq-xh-h7d"/>
                                     <outlet property="city" destination="dR8-pW-5Iv" id="2hw-CR-q6z"/>
+                                    <outlet property="myImage" destination="QHL-7O-C6j" id="gkv-D6-slE"/>
                                     <outlet property="name" destination="cc1-Dx-p0P" id="y3v-MT-HIZ"/>
                                 </connections>
                             </tableViewCell>
