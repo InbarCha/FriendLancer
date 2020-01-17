@@ -16,6 +16,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var NameTextField: UITextField!
     @IBOutlet weak var professionTextField: UITextField!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var caneclBtn: UIButton!
     
     
     override func viewDidLoad() {
@@ -27,6 +28,7 @@ class RegisterViewController: UIViewController {
     
     @IBAction func SaveBtnPressed(_ sender: Any) {
         spinner.isHidden = false
+        caneclBtn.isEnabled = false
         if (emailTextField.text != "" && passwordTextField.text != "" && professionTextField.text != "" && NameTextField.text != "") {
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
                         //there was a error
@@ -100,10 +102,16 @@ class RegisterViewController: UIViewController {
 
             }}))
             self.spinner.isHidden = true
+            self.caneclBtn.isEnabled = true
             self.present(alert, animated: true, completion: nil)
         }
     
     }
+    
+    @IBAction func cancelBtnPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     /*
     // MARK: - Navigation

@@ -125,6 +125,23 @@ class ModelFirebase{
         };
     }
     
+    func update(user:User) {
+        let db = Firestore.firestore()
+        var ref: DocumentReference? = nil
+        
+        db.collection("Users").whereField("email", isEqualTo: user.email).getDocuments{ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    document.reference.updateData(user.toJson()) { (_error:Error?) in
+                        ModelEvents.UserDataNotification.post()
+                    }
+                }
+            }
+        };
+    }
+    
     func getAllForums(callback: @escaping ([Forum]?)->Void){
         let db = Firestore.firestore()
         db.collection("Forums").getDocuments { (querySnapshot, err) in

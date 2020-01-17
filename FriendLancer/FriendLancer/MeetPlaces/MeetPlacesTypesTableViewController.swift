@@ -10,6 +10,7 @@ import UIKit
 
 class MeetPlacesTypesTableViewController: UITableViewController {
     
+    @IBOutlet weak var plusBarBtn: UIBarButtonItem!
     var data = [MeetPlaceType]()
     
     var observer:Any?

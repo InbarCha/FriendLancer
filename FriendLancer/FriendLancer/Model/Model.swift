@@ -55,6 +55,10 @@ class Model {
         ModelEvents.PostDataNotification.post();
     }
     
+    func update(user:User) {
+        modelFirebase.update(user: user)
+    }
+    
     func getUserByEmail(callback:@escaping (User?)->Void, email:String) {
         modelFirebase.getUserByEmail(callback: callback, email: email)
     }
@@ -96,6 +100,7 @@ class ModelEvents{
     static let MeetPlacesDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.MeetPlacesDataNotification")
     static let UserLoggedInDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.UserLoggedInDataNotification")
     static let UserLoggedOutDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.UserLoggedOutDataNotification")
+    static let UserDataNotification = ModelEventsTemplate(name: "com.nitzanInbar.UserDataNotification")
     
     static func removeObserver(observer:Any){
         NotificationCenter.default.removeObserver(observer)

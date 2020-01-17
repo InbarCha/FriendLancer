@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var cancelBtn: UIButton!
     
     
     override func viewDidLoad() {
@@ -23,6 +24,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func LoginBtnPressed(_ sender: Any) {
         spinner.isHidden = false
+        cancelBtn.isEnabled = false
         if (emailTextField.text != "" && passwordTextField.text != "") {
             Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { [weak self] authResult, error in
                     guard let strongSelf = self else { return }
@@ -41,6 +43,7 @@ class LoginViewController: UIViewController {
                                 print("destructive")
                     }}))
                     self!.spinner.isHidden = true
+                    self!.cancelBtn.isEnabled = true
                     self!.present(alert, animated: true, completion: nil)
                 }
                 else {
@@ -66,6 +69,11 @@ class LoginViewController: UIViewController {
               // ...
             }
         }
+    }
+    
+    
+    @IBAction func cancelBtnPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     /*

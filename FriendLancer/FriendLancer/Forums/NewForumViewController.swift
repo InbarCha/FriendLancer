@@ -26,12 +26,14 @@ UINavigationControllerDelegate{
         ForumIcon.image = UIImage(named:"avatar")
         spinner.isHidden = true
         saveNewForumBtn.isEnabled = true
+        chooseIconBtn.isEnabled = true
     }
     
     
     @IBAction func Save(_ sender: Any) {
         spinner.isHidden = false
         saveNewForumBtn.isEnabled = false
+        chooseIconBtn.isEnabled = false
         if let image = selectedForumIcon {
             Model.instance.saveImage(image: image) { (url) in
                 print("saved image url \(url)")

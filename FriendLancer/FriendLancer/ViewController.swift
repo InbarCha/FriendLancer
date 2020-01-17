@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     var handle:AuthStateDidChangeListenerHandle?
     var observer1:Any?
     var observer2:Any?
+    var observer3:Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,10 @@ class ViewController: UIViewController {
         
         observer2 = ModelEvents.UserLoggedOutDataNotification.observe {
             self.userLoggedOut()
+        }
+        
+        observer3 = ModelEvents.UserDataNotification.observe {
+            self.userLoggedIn()
         }
         
         setView()
