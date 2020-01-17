@@ -34,7 +34,7 @@ class RegisterViewController: UIViewController {
                         //there was a error
                        if let error = error {
                            print("error adding user: \(error)")
-                            let alert = UIAlertController(title: "Alert", message: "Can't add user!", preferredStyle: .alert)
+                            let alert = UIAlertController(title: "Error", message: "Can't add user!", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                                   switch action.style{
                                   case .default:
@@ -60,7 +60,7 @@ class RegisterViewController: UIViewController {
                         
                         Model.instance.add(user: User(email: self.emailTextField.text!.lowercased(), name: self.NameTextField.text!, profession: self.professionTextField.text!))
                         
-                        let alert = UIAlertController(title: "Alert", message: "Added User!", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Welcome!", message: "Added User!", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                               switch action.style{
                               case .default:
@@ -84,7 +84,7 @@ class RegisterViewController: UIViewController {
         }
         //can't add user because email/password don't exist
         else {
-            let alert = UIAlertController(title: "Alert", message: "Email/Password/Name/Profession are empty!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error", message: "Email/Password/Name/Profession are empty!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                   switch action.style{
                   case .default:

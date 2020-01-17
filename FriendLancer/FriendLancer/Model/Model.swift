@@ -52,7 +52,6 @@ class Model {
     
     func update(post:Post) {
         modelFirebase.update(post:post)
-        ModelEvents.PostDataNotification.post();
     }
     
     func update(user:User) {

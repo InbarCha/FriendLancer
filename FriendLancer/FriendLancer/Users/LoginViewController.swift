@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
                     guard let strongSelf = self else { return }
                 if let error = error {
                     print("can't sign in!")
-                    let alert = UIAlertController(title: "Alert", message: "Can't login, Email or Password are incorrect", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Error", message: "Can't login, Email or Password are incorrect", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                           switch action.style{
                           case .default:
@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
                 }
                 else {
                     ModelEvents.UserLoggedInDataNotification.post()
-                    let alert = UIAlertController(title: "Alert", message: "Logged In!", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Welcome!", message: "Logged In!", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                           switch action.style{
                           case .default:

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class NewPostViewController: UIViewController {
 
@@ -24,7 +25,8 @@ class NewPostViewController: UIViewController {
     }
     
     @IBAction func Save(_ sender: Any) {
-        let post = Post(postTitle: self.postTitle.text!, postSubject: self.postSubjectTextView.text!, meetingPlace: self.meetingPlaceTextField.text!, forumName: self.forumTopic)
+        let currentUserEmail = Auth.auth().currentUser?.email
+        let post = Post(postTitle: self.postTitle.text!, postSubject: self.postSubjectTextView.text!, meetingPlace: self.meetingPlaceTextField.text!, forumName: self.forumTopic, postOwnerUserEmail: currentUserEmail!)
         Model.instance.add(post: post);
         self.navigationController?.popViewController(animated: true);
     }

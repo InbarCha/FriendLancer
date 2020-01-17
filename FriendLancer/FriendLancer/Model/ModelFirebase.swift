@@ -119,7 +119,9 @@ class ModelFirebase{
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    document.reference.updateData(post.toJson())
+                    document.reference.updateData(post.toJson()) { (_error:Error?) in
+                        ModelEvents.PostDataNotification.post()
+                    }
                 }
             }
         };

@@ -7,25 +7,56 @@
 //
 
 import UIKit
+import Firebase
 
 class MeetPlacesTypesTableViewController: UITableViewController {
     
     @IBOutlet weak var plusBarBtn: UIBarButtonItem!
     var data = [MeetPlaceType]()
     
-    var observer:Any?
+    var observer1:Any?
+    var observer2:Any?
+    var observer3:Any?
     var selected:MeetPlaceType?
+    @IBOutlet weak var plusBtn: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        observer = ModelEvents.MeetPlacesTypeDataNotification.observe{
+        observer1 = ModelEvents.MeetPlacesTypeDataNotification.observe{
             self.reloadData();
+        }
+        observer2 = ModelEvents.UserLoggedInDataNotification.observe {
+            self.ifUserLoggedIn()
+        }
+        observer3 = ModelEvents.UserLoggedOutDataNotification.observe {
+            self.ifUserLoggedIn()
         }
         
         reloadData();
+        ifUserLoggedIn()
     }
 
+    func ifUserLoggedIn() {
+        if (Auth.auth().currentUser != nil) {
+            //user is logged in. check if it's admin
+            let email = Auth.auth().currentUser?.email
+            Model.instance.getUserByEmail(callback: { (myUser:User?) in
+                if(myUser != nil) {
+                    if (myUser?.isAdmin == "true") {
+                        self.plusBtn.isEnabled = true
+                    }
+                    else {
+                        self.plusBtn.isEnabled = false
+                    }
+                }
+            }, email: email!)
+        }
+        else {
+            self.plusBtn.isEnabled = false
+        }
+    }
+    
     // MARK: - Table view data source
     
     func reloadData(){

@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import Firebase
 
 class ForumPostViewController: UIViewController {
     
     var post:Post?
-    var observer:Any?;
+    var observer1:Any?;
+    var observer2:Any?
+    var observer3:Any?
+    @IBOutlet weak var coverImage: UIImageView!
+    @IBOutlet weak var coverLbl: UILabel!
     
     @IBOutlet weak var postTitleLbl: UILabel!
     @IBOutlet weak var subjectLbl: UILabel!
@@ -68,13 +73,23 @@ class ForumPostViewController: UIViewController {
                 self.subjectLbl.text = _data!.postSubject
                 self.MeetingPlaceLbl.text = _data!.meetingPlace
                 
-                
+                self.setView()
             }
         }, postId: post!.postId)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        observer1 = ModelEvents.PostDataNotification.observe{
+            self.setView();
+        }
+        observer2 = ModelEvents.UserLoggedInDataNotification.observe {
+            self.setView()
+        }
+        observer3 = ModelEvents.UserLoggedOutDataNotification.observe {
+            self.setView()
+        }
+        
         setView()
     }
     
@@ -82,14 +97,21 @@ class ForumPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
+        observer1 = ModelEvents.PostDataNotification.observe{
+            self.reloadData();();
+        }
+        observer2 = ModelEvents.UserLoggedInDataNotification.observe {
+            self.reloadData()
+        }
+        observer3 = ModelEvents.UserLoggedOutDataNotification.observe {
+            self.reloadData()
+        }
+        
+        reloadData()
     }
     
     func setView() {
-        observer = ModelEvents.PostDataNotification.observe{
-            self.reloadData();
-        }
-        
-        reloadData();
+        ifUserLoggedIn()
         
         //first participant
         firstParticipantQuestion.isHidden = true
@@ -98,9 +120,13 @@ class ForumPostViewController: UIViewController {
         oneLbl.isHidden = true
         noParticipantsImage.isHidden = true
         
-        if (post?.participant1Name != "") {
-            firstParticipantName.text = post?.participant1Name
-            firstParticipantProf.text = post?.participant1Prof
+        if (post?.participant1Email != "") {
+            Model.instance.getUserByEmail(callback: { (myUser:User?) in
+                if(myUser != nil) {
+                    self.firstParticipantName.text = myUser?.name
+                    self.firstParticipantProf.text = myUser?.profession
+                }
+            }, email: post!.participant1Email)
             oneLbl.isHidden = false
             
             if (post?.participant1Status == "arriving") {
@@ -120,10 +146,14 @@ class ForumPostViewController: UIViewController {
         secondParticipantX.isHidden = true
         twoLbl.isHidden = true
         
-        if (post?.participant2Name != "") {
-            secondParticipantName.text = post?.participant2Name
-            secondParticipantProf.text = post?.participant2Prof
-            twoLbl.isHidden = true
+        if (post?.participant2Email != "") {
+            Model.instance.getUserByEmail(callback: { (myUser:User?) in
+                if(myUser != nil) {
+                    self.secondParticipantName.text = myUser?.name
+                    self.secondParticipantProf.text = myUser?.profession
+                }
+            }, email: post!.participant2Email)
+            twoLbl.isHidden = false
             
             if (post?.participant2Status == "arriving") {
                 secondParticipantV.isHidden = false
@@ -142,10 +172,14 @@ class ForumPostViewController: UIViewController {
         thirdParticipantX.isHidden = true
         threeLbl.isHidden = true
         
-        if (post?.participant3Name != "") {
-            thirdParticipantName.text = post?.participant3Name
-            thirdParticipantProf.text = post?.participant3Prof
-            threeLbl.isHidden = true
+        if (post?.participant3Email != "") {
+            Model.instance.getUserByEmail(callback: { (myUser:User?) in
+                if(myUser != nil) {
+                    self.thirdParticipantName.text = myUser?.name
+                    self.thirdParticipantProf.text = myUser?.profession
+                }
+            }, email: post!.participant3Email)
+            threeLbl.isHidden = false
             
             if (post?.participant3Status == "arriving") {
                 thirdParticipantV.isHidden = false
@@ -164,9 +198,13 @@ class ForumPostViewController: UIViewController {
         forthParticipantX.isHidden = true
         fourLbl.isHidden = true
         
-        if (post?.participant4Name != "") {
-            forthParticipantName.text = post?.participant4Name
-            forthParticipantProf.text = post?.participant4Prof
+        if (post?.participant4Email != "") {
+            Model.instance.getUserByEmail(callback: { (myUser:User?) in
+                if(myUser != nil) {
+                    self.forthParticipantName.text = myUser?.name
+                    self.forthParticipantProf.text = myUser?.profession
+                }
+            }, email: post!.participant4Email)
             fourLbl.isHidden = false
             
             if (post?.participant4Status == "arriving") {
@@ -186,9 +224,13 @@ class ForumPostViewController: UIViewController {
         fifthParticipantX.isHidden = true
         fiveLbl.isHidden = true
         
-        if (post?.participant5Name != "") {
-            fifthParticipantName.text = post?.participant5Name
-            fifthParticipantProf.text = post?.participant5Prof
+        if (post?.participant5Email != "") {
+            Model.instance.getUserByEmail(callback: { (myUser:User?) in
+                if(myUser != nil) {
+                    self.fifthParticipantName.text = myUser?.name
+                    self.fifthParticipantProf.text = myUser?.profession
+                }
+            }, email: post!.participant5Email)
             fiveLbl.isHidden = false
             
             if (post?.participant5Status == "arriving") {
@@ -202,18 +244,121 @@ class ForumPostViewController: UIViewController {
             }
         }
         
-        if (post?.participant1Name == "" && post?.participant2Name == "" && post?.participant3Name == "" &&
-            post?.participant4Name == "" && post?.participant5Name == "") {
+        if (post?.participant1Email == "" && post?.participant2Email == "" && post?.participant3Email == "" && post?.participant4Email == "" && post?.participant5Email == "") {
             noParticipantsImage.isHidden = false
         }
     }
     
+    func ifUserLoggedIn() {
+        self.editBtn.isEnabled = false
+        if (Auth.auth().currentUser != nil) {
+            //user is logged in. check if it's admin
+            let email = Auth.auth().currentUser?.email
+            Model.instance.getUserByEmail(callback: { (myUser:User?) in
+                if(myUser != nil) {
+                    self.coverImage.isHidden = true
+                    self.coverLbl.isHidden = true
+                    
+                    if (myUser?.email == self.post?.postOwnerUserEmail) {
+                        self.editBtn.isEnabled = true
+                    }
+                    else {
+                        self.editBtn.isEnabled = false
+                    }
+                }
+            }, email: email!)
+        }
+        else {
+            self.coverImage.isHidden = false
+            self.coverLbl.isHidden = false
+            self.editBtn.isEnabled = false
+        }
+    }
+    
     @IBAction func arrivingBtnPressed(_ sender: Any) {
-        
+        changeParticipants(status: "arriving")
     }
     
     @IBAction func MaybeArrivingBtnPressed(_ sender: Any) {
+        changeParticipants(status: "maybe")
+    }
+    
+    @IBAction func NotArrivingBtnPressed(_ sender: Any) {
+        changeParticipants(status: "not arriving")
+    }
+    
+    
+    func changeParticipants(status:String) {
+        let email = Auth.auth().currentUser?.email
+        let postTitle = self.post!.postTitle
+        let postSubject = self.post!.postSubject
+        let meetingPlace = self.post!.meetingPlace
+        let forumName = self.post!.forumName
+        let postOwnerUserEmail = self.post!.postOwnerUserEmail
+        let postId = self.post!.postId
+        let participant1Email = self.post!.participant1Email
+        let participant2Email = self.post!.participant2Email
+        let participant3Email = self.post!.participant3Email
+        let participant4Email = self.post!.participant4Email
+        let participant5Email = self.post!.participant5Email
+        let participant1Status = self.post!.participant1Status
+        let participant2Status = self.post!.participant2Status
+        let participant3Status = self.post!.participant3Status
+        let participant4Status = self.post!.participant4Status
+        let participant5Status = self.post!.participant5Status
         
+        var flag:Int = 0
+        if (email == participant1Email) {
+            flag = 1
+        }
+        else if (email == participant2Email) {
+            flag = 2
+        }
+        else if (email == participant3Email) {
+            flag = 3
+        }
+        else if (email == participant4Email) {
+            flag = 4
+        }
+        else if (email == participant5Email) {
+            flag = 5
+        }
+        else if (participant1Email == "") {
+            flag = 1
+        }
+        else if (participant2Email == "") {
+            flag = 2
+        }
+        else if (participant3Email == "") {
+            flag = 3
+        }
+        else if (participant4Email == "") {
+            flag = 4
+        }
+        else if (participant5Email == "") {
+            flag = 5
+        }
+         
+        if (flag == 1) {
+            let post = Post(postTitle: postTitle, postSubject: postSubject, meetingPlace: meetingPlace, forumName: forumName, postOwnerUserEmail: postOwnerUserEmail, participant1Email: email!, participant2Email: participant2Email, participant3Email: participant3Email, participant4Email:participant4Email, participant5Email: participant5Email, participant1Status: status, participant2Status: participant2Status, participant3Status: participant3Status, participant4Status: participant4Status, participant5Status: participant5Status, postId: postId)
+            Model.instance.update(post: post)
+        }
+        else if (flag == 2) {
+            let post = Post(postTitle: postTitle, postSubject: postSubject, meetingPlace: meetingPlace, forumName: forumName, postOwnerUserEmail: postOwnerUserEmail, participant1Email: participant1Email, participant2Email: email!, participant3Email: participant3Email, participant4Email:participant4Email, participant5Email: participant5Email, participant1Status: participant1Status, participant2Status: status, participant3Status: participant3Status, participant4Status: participant4Status, participant5Status: participant5Status, postId: postId)
+            Model.instance.update(post: post)
+        }
+        else if (flag == 3) {
+            let post = Post(postTitle: postTitle, postSubject: postSubject, meetingPlace: meetingPlace, forumName: forumName, postOwnerUserEmail: postOwnerUserEmail, participant1Email: participant1Email, participant2Email: participant2Email, participant3Email: email!, participant4Email:participant4Email, participant5Email: participant5Email, participant1Status: participant1Status, participant2Status: participant2Status, participant3Status: status, participant4Status: participant4Status, participant5Status: participant5Status, postId: postId)
+            Model.instance.update(post: post)
+        }
+        else if (flag == 4) {
+            let post = Post(postTitle: postTitle, postSubject: postSubject, meetingPlace: meetingPlace, forumName: forumName, postOwnerUserEmail: postOwnerUserEmail, participant1Email: participant1Email, participant2Email: participant2Email, participant3Email: participant3Email, participant4Email: email!, participant5Email: participant5Email, participant1Status: participant1Status, participant2Status: participant2Status, participant3Status: participant3Status, participant4Status: status, participant5Status: participant5Status, postId: postId)
+            Model.instance.update(post: post)
+        }
+        else if (flag == 5) {
+            let post = Post(postTitle: postTitle, postSubject: postSubject, meetingPlace: meetingPlace, forumName: forumName, postOwnerUserEmail: postOwnerUserEmail, participant1Email: participant1Email, participant2Email: participant2Email, participant3Email: participant3Email, participant4Email:participant4Email, participant5Email: email!, participant1Status: participant1Status, participant2Status: participant2Status, participant3Status: participant3Status, participant4Status: participant4Status, participant5Status: status, postId: postId)
+            Model.instance.update(post: post)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -13,12 +13,14 @@ class User {
     var name:String = ""
     var profession:String = ""
     var image:String = ""
+    var isAdmin:String = "false"
     
-    init(email:String, name:String, profession:String, image:String = "") {
+    init(email:String, name:String, profession:String, image:String = "", isAdmin:String = "false") {
         self.email = email
         self.name = name
         self.profession = profession
         self.image = image
+        self.isAdmin = isAdmin
     }
     
     init(json:[String:Any]){
@@ -26,6 +28,7 @@ class User {
         self.name = json["name"] as! String;
         self.profession = json["profession"] as! String;
         self.image = json["image"] as! String;
+        self.isAdmin = json["isAdmin"] as! String;
     }
     
     
@@ -35,6 +38,7 @@ class User {
         json["name"] = self.name
         json["profession"] = self.profession
         json["image"] = self.image
+        json["isAdmin"] = self.isAdmin
         return json;
     }
     

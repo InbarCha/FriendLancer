@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import Firebase
 
 class MeetPlaceTableViewController: UITableViewController {
 
     var meetPlaceType:MeetPlaceType?
     var data = [MeetPlace]()
-    var observer:Any?
+    var observer1:Any?
+    var observer2:Any?
+    var observer3:Any?
     var selected:MeetPlace?
+    @IBOutlet weak var plusBtn: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +26,40 @@ class MeetPlaceTableViewController: UITableViewController {
             self.title = meetPlaceType?.type
         }
         
-        observer = ModelEvents.MeetPlacesDataNotification.observe{
+        observer1 = ModelEvents.MeetPlacesDataNotification.observe{
             self.reloadData();
+        }
+        observer2 = ModelEvents.UserLoggedInDataNotification.observe {
+            self.ifUserLoggedIn()
+        }
+        observer3 = ModelEvents.UserLoggedOutDataNotification.observe {
+            self.ifUserLoggedIn()
         }
         
         reloadData();
+        ifUserLoggedIn()
     }
+    
+    func ifUserLoggedIn() {
+        if (Auth.auth().currentUser != nil) {
+            //user is logged in. check if it's admin
+            let email = Auth.auth().currentUser?.email
+            Model.instance.getUserByEmail(callback: { (myUser:User?) in
+                if(myUser != nil) {
+                    if (myUser?.isAdmin == "true") {
+                        self.plusBtn.isEnabled = true
+                    }
+                    else {
+                        self.plusBtn.isEnabled = false
+                    }
+                }
+            }, email: email!)
+        }
+        else {
+            self.plusBtn.isEnabled = false
+        }
+    }
+    
     
     func reloadData(){
         Model.instance.getAllMeetingPlaces(callback: { (_data:[MeetPlace]?) in
@@ -70,7 +102,6 @@ class MeetPlaceTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selected = data[indexPath.row]
-        performSegue(withIdentifier: "toNewMeetPlaceSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
