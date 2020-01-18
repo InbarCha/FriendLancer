@@ -12,11 +12,16 @@ class MeetPlaceType {
     var type:String = ""
     var typeId:String = ""
     
-    init(type:String) {
+    init(type:String, typeId:String="") {
         self.type = type
         
-        let identifier = UUID()
-        self.typeId = identifier.uuidString
+        if(typeId == "") {
+            let identifier = UUID()
+            self.typeId = identifier.uuidString
+        }
+        else {
+            self.typeId = typeId
+        }
     }
     
     init(json:[String:Any]) {

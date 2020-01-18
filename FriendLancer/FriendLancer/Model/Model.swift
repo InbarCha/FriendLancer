@@ -14,56 +14,71 @@ class Model {
     var modelFirebase:ModelFirebase = ModelFirebase()
     var modelSql:ModelSql = ModelSql()
     
+    private init() {
+        modelSql.connect()
+    }
+    
     func add(forum:Forum){
         modelFirebase.add(forum:forum);
+        modelSql.add(forum:forum)
         ModelEvents.ForumDataNotification.post();
     }
     
     func add(post:Post) {
         modelFirebase.add(post: post)
+        modelSql.add(post: post)
         ModelEvents.PostDataNotification.post();
     }
     
     func add(comment:Comment) {
         modelFirebase.add(comment: comment)
+        modelSql.add(comment: comment)
         ModelEvents.CommentDataNotification.post();
     }
     
     func add(meetPlace:MeetPlace) {
         modelFirebase.add(meetPlace: meetPlace)
+        modelSql.add(meetPlace: meetPlace)
         ModelEvents.MeetPlacesDataNotification.post();
     }
     
     func add(meetPlaceType:MeetPlaceType) {
         modelFirebase.add(meetPlaceType: meetPlaceType)
+        modelSql.add(meetPlaceType: meetPlaceType)
         ModelEvents.MeetPlacesTypeDataNotification.post();
     }
     
     func add(user:User) {
         modelFirebase.add(user:user)
+        modelSql.add(user:user)
         ModelEvents.UserLoggedInDataNotification.post()
     }
     
     func update(comment:Comment) {
         modelFirebase.update(comment:comment)
+        modelSql.add(comment:comment)
         ModelEvents.CommentDataNotification.post();
     }
     
     func update(post:Post) {
         modelFirebase.update(post:post)
+        modelSql.add(post: post)
     }
     
     func update(user:User) {
         modelFirebase.update(user: user)
+        modelSql.add(user: user)
     }
     
     func delete(post:Post) {
         modelFirebase.delete(post:post)
+        modelSql.delete(post: post)
         ModelEvents.PostDataNotification.post()
     }
     
     func delete(comment:Comment) {
         modelFirebase.delete(comment:comment)
+        modelSql.delete(comment: comment)
         ModelEvents.CommentDataNotification.post()
     }
     

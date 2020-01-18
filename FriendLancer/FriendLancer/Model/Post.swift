@@ -9,13 +9,13 @@
 import Foundation
 
 class Post {
+    var postId:String = ""
     var postTitle:String = ""
     var postSubject = """
                       """
     var meetingPlace:String = ""
     var forumName:String = ""
     
-    var postId:String = ""
     var postOwnerUserEmail:String = ""
     
     var participant1Email:String = ""

@@ -9,23 +9,28 @@
 import Foundation
 
 class MeetPlace {
+    var meetPlaceId: String = ""
+    var meetPlaceTypeId:String = ""
     var name:String = ""
     var city:String = ""
     var address:String = ""
     var image:String = ""
-    var meetPlaceId: String = ""
-    var meetPlaceTypeId:String = ""
     
     
-    init(name:String, meetPlaceTypeId:String, address:String, city:String, image:String) {
+    init(name:String, meetPlaceTypeId:String, address:String, city:String, image:String, meetPlaceId:String = "") {
         self.name = name
         self.meetPlaceTypeId = meetPlaceTypeId
         self.address = address
         self.city = city
         self.image = image
         
-        let identifier = UUID()
-        self.meetPlaceId = identifier.uuidString
+        if (meetPlaceId == "") {
+            let identifier = UUID()
+            self.meetPlaceId = identifier.uuidString
+        }
+        else {
+            self.meetPlaceId = meetPlaceId
+        }
     }
     
     init(json:[String:Any]) {

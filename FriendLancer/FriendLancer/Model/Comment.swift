@@ -9,22 +9,27 @@
 import Foundation
 
 class Comment {
+    var commentId:String = ""
+    var postId:String = ""
     var userEmail:String = ""
     var userName:String = ""
     var userProfession:String = ""
     var comment:String = ""
-    var postId:String = ""
-    var commentId:String = ""
     
-    init(userEmail:String,userName:String, userProfession:String, comment:String, postId:String) {
+    init(userEmail:String,userName:String, userProfession:String, comment:String, postId:String, commentId:String="") {
         self.userEmail = userEmail
         self.userName = userName
         self.userProfession = userProfession
         self.comment = comment
         self.postId = postId
         
-        let identifier = UUID()
-        self.commentId = identifier.uuidString
+        if(commentId == "") {
+            let identifier = UUID()
+            self.commentId = identifier.uuidString
+        }
+        else {
+            self.commentId = commentId
+        }
     }
     
     init(json:[String:Any]) {
