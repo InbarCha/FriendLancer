@@ -44,6 +44,8 @@
 		3DF9075423BF428300D24A6B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DF9075323BF428300D24A6B /* GoogleService-Info.plist */; };
 		5F8E5B5323D19F53002A1991 /* EditMyZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E5B5223D19F53002A1991 /* EditMyZoneViewController.swift */; };
 		5FACD4F823CF451D00806C45 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FACD4F723CF451D00806C45 /* User.swift */; };
+		5FC90F6723D321F500930FCF /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FC90F6623D321EB00930FCF /* libsqlite3.0.tbd */; };
+		5FC90F6923D3221A00930FCF /* ModelSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC90F6823D3221A00930FCF /* ModelSql.swift */; };
 		5FDFC9E923CF385800AF433F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDFC9E823CF385800AF433F /* RegisterViewController.swift */; };
 		5FE7417923CF1CD10032BFD1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7417823CF1CD10032BFD1 /* LoginViewController.swift */; };
 		5FE7417B23CF243D0032BFD1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE7417A23CF243D0032BFD1 /* WebKit.framework */; };
@@ -89,6 +91,8 @@
 		3DF9075323BF428300D24A6B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F8E5B5223D19F53002A1991 /* EditMyZoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyZoneViewController.swift; sourceTree = "<group>"; };
 		5FACD4F723CF451D00806C45 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5FC90F6623D321EB00930FCF /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		5FC90F6823D3221A00930FCF /* ModelSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSql.swift; sourceTree = "<group>"; };
 		5FDFC9E823CF385800AF433F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		5FE7417823CF1CD10032BFD1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5FE7417A23CF243D0032BFD1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -103,6 +107,7 @@
 			files = (
 				5FE7417B23CF243D0032BFD1 /* WebKit.framework in Frameworks */,
 				1614BCC77C3587A5A8B0C3A6 /* Pods_FriendLancer.framework in Frameworks */,
+				5FC90F6723D321F500930FCF /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 		04FF7F69794D8EEC2F80A479 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5FC90F6623D321EB00930FCF /* libsqlite3.0.tbd */,
 				5FE7417A23CF243D0032BFD1 /* WebKit.framework */,
 				2F246FAE97693BF037C192FA /* Pods_FriendLancer.framework */,
 			);
@@ -130,6 +136,7 @@
 				3D02E3B823CB784100D71471 /* MeetPlaceType.swift */,
 				3D02E3BA23CB78D100D71471 /* MeetPlace.swift */,
 				5FACD4F723CF451D00806C45 /* User.swift */,
+				5FC90F6823D3221A00930FCF /* ModelSql.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -366,6 +373,7 @@
 			files = (
 				3D02E3B923CB784100D71471 /* MeetPlaceType.swift in Sources */,
 				3D02E3AB23CB382A00D71471 /* CommentCell.swift in Sources */,
+				5FC90F6923D3221A00930FCF /* ModelSql.swift in Sources */,
 				3D02E3BB23CB78D100D71471 /* MeetPlace.swift in Sources */,
 				3DF9074B23BF39B800D24A6B /* ForumsTableViewController.swift in Sources */,
 				3D02E3AF23CB3ACB00D71471 /* EditCommentViewController.swift in Sources */,

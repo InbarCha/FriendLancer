@@ -14,6 +14,7 @@ import UIKit
 class Model {
     static let instance = Model();
     var modelFirebase:ModelFirebase = ModelFirebase()
+    var modelSql:ModelSql = ModelSql()
     
     func add(forum:Forum){
         modelFirebase.add(forum:forum);
