@@ -43,6 +43,15 @@ UINavigationControllerDelegate{
                 self.navigationController?.popViewController(animated: true);
             }
         }
+        else {
+            Model.instance.saveImage(image: UIImage(named:"avatar")!) { (url) in
+                print("saved image url \(url)")
+                
+                let forum = Forum(forumTopic: self.ForumTopicNameInput.text!, forumTopicAvatar:url);
+                Model.instance.add(forum: forum);
+                self.navigationController?.popViewController(animated: true);
+            }
+        }
     }
     
     

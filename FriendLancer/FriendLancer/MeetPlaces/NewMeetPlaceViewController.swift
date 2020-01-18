@@ -17,6 +17,7 @@ class NewMeetPlaceViewController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var meetPlaceImage: UIImageView!
+    @IBOutlet weak var chooseBtn: UIButton!
     
     var selectedMeetPlaceImage:UIImage?
     var meetPlaceType:MeetPlaceType?
@@ -26,6 +27,7 @@ class NewMeetPlaceViewController: UIViewController, UIImagePickerControllerDeleg
         
         spinner.isHidden = true
         saveBtn.isEnabled = true
+        chooseBtn.isEnabled = true
 
         // Do any additional setup after loading the view.
     }
@@ -51,10 +53,20 @@ class NewMeetPlaceViewController: UIViewController, UIImagePickerControllerDeleg
     @IBAction func Save(_ sender: Any) {
         spinner.isHidden = false
         saveBtn.isEnabled = false
+        chooseBtn.isEnabled = false
         if let image = selectedMeetPlaceImage {
             Model.instance.saveImage(image: image) { (url) in
                 print("saved image url \(url)")
                 
+                let meetPlace = MeetPlace(name: self.nameTextField.text!, meetPlaceTypeId: self.meetPlaceType!.typeId, address: self.addressTextField.text!, city: self.cityTextField.text!, image: url)
+                Model.instance.add(meetPlace: meetPlace);
+                self.navigationController?.popViewController(animated: true);
+            }
+        }
+        else {
+            Model.instance.saveImage(image: UIImage(named:"avatar")!) { (url) in
+                print("saved image url \(url)")
+                           
                 let meetPlace = MeetPlace(name: self.nameTextField.text!, meetPlaceTypeId: self.meetPlaceType!.typeId, address: self.addressTextField.text!, city: self.cityTextField.text!, image: url)
                 Model.instance.add(meetPlace: meetPlace);
                 self.navigationController?.popViewController(animated: true);

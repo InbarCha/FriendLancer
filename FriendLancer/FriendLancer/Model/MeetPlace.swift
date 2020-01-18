@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class MeetPlace {
     var meetPlaceId: String = ""
@@ -15,7 +16,6 @@ class MeetPlace {
     var city:String = ""
     var address:String = ""
     var image:String = ""
-    
     
     init(name:String, meetPlaceTypeId:String, address:String, city:String, image:String, meetPlaceId:String = "") {
         self.name = name
@@ -42,8 +42,8 @@ class MeetPlace {
         self.meetPlaceTypeId = json["meetPlaceTypeId"] as! String;
     }
     
-    func toJson() ->[String:String] {
-        var json = [String:String]();
+    func toJson() ->[String:Any] {
+        var json = [String:Any]();
         json["name"] = self.name
         json["address"] = self.address
         json["city"] = self.city

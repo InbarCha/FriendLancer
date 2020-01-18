@@ -20,6 +20,7 @@ class ModelFirebase{
                     print("Error adding document: \(err)")
                 } else {
                     print("Forum added with ID: \(ref!.documentID)")
+                    ModelEvents.ForumDataNotification.post()
                 }
         })
     }
@@ -76,6 +77,7 @@ class ModelFirebase{
                     print("Error adding document: \(err)")
                 } else {
                     print("Forum added with ID: \(ref!.documentID)")
+                    ModelEvents.MeetPlacesDataNotification.post()
                 }
         })
     }
@@ -169,23 +171,29 @@ class ModelFirebase{
         };
     }
     
-    func getAllForums(callback: @escaping ([Forum]?)->Void){
+    func getAllForums(since:Int64, callback: @escaping ([Forum]?)->Void){
         let db = Firestore.firestore()
-        db.collection("Forums").getDocuments { (querySnapshot, err) in
+        db.collection("Forums").order(by:"lastUpdated").start(at:[Timestamp(seconds:since, nanoseconds: 0)]).getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
                 callback(nil);
             } else {
                 var data = [Forum]();
                 for document in querySnapshot!.documents {
-                    data.append(Forum(json: document.data()));
+                    if let ts = document.data()["lastUpdated"] as? Timestamp {
+                        let tsDate = ts.dateValue()
+                        print("\(tsDate)")
+                        let tsDouble = tsDate.timeIntervalSince1970
+                        print("\(tsDate)")
+                        data.append(Forum(json: document.data()));
+                    }
                 }
                 callback(data);
             }
         };
     }
     
-    func getAllMeetingPlaces(callback: @escaping ([MeetPlace]?)->Void, meetPlaceTypeId:String){
+    func getAllMeetingPlaces(meetPlaceTypeId:String, callback: @escaping ([MeetPlace]?)->Void){
         let db = Firestore.firestore()
         db.collection("MeetPlaces").whereField("meetPlaceTypeId", isEqualTo: meetPlaceTypeId).getDocuments { (querySnapshot, err) in
             if let err = err {

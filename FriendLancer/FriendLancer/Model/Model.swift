@@ -14,14 +14,9 @@ class Model {
     var modelFirebase:ModelFirebase = ModelFirebase()
     var modelSql:ModelSql = ModelSql()
     
-    private init() {
-        modelSql.connect()
-    }
-    
     func add(forum:Forum){
         modelFirebase.add(forum:forum);
-        modelSql.add(forum:forum)
-        ModelEvents.ForumDataNotification.post();
+        modelSql.add(forum: forum)
     }
     
     func add(post:Post) {
@@ -39,7 +34,6 @@ class Model {
     func add(meetPlace:MeetPlace) {
         modelFirebase.add(meetPlace: meetPlace)
         modelSql.add(meetPlace: meetPlace)
-        ModelEvents.MeetPlacesDataNotification.post();
     }
     
     func add(meetPlaceType:MeetPlaceType) {
@@ -91,11 +85,33 @@ class Model {
     }
     
     func getAllForums(callback:@escaping ([Forum]?)->Void){
-        modelFirebase.getAllForums(callback: callback)
+        //get the local last update date
+        let lud = modelSql.getLastUpdateDate(tableName: "FORUMS")
+        
+        //get the records from firebase since the local last update date
+        modelFirebase.getAllForums(since:lud) { (forumsArray) in
+            //save the new records to the local db (SQL)
+            var localLud:Int64 = 0
+            for forum in forumsArray! {
+                self.modelSql.add(forum: forum)
+                if (forum.lastUpdated > localLud) {
+                    localLud = forum.lastUpdated
+                }
+            }
+            
+            //save the new local last update date
+            self.modelSql.setLastUpdateDate(name: "FORUMS", lud: localLud)
+            
+            //get the complete data from the local db
+            let completeData = self.modelSql.getAllForums()
+            
+            //return the complete data to the caller
+            callback(completeData)
+        }
     }
     
     func getAllMeetingPlaces(callback:@escaping ([MeetPlace]?)->Void, meetPlaceTypeId:String) {
-        modelFirebase.getAllMeetingPlaces(callback: callback, meetPlaceTypeId:meetPlaceTypeId)
+        modelFirebase.getAllMeetingPlaces(meetPlaceTypeId: meetPlaceTypeId, callback: callback)
     }
     
     func getAllMeetingPlaceTypes(callback:@escaping ([MeetPlaceType]?)->Void){

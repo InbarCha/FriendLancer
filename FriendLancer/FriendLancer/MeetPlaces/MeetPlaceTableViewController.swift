@@ -69,6 +69,11 @@ class MeetPlaceTableViewController: UITableViewController {
             }
         }, meetPlaceTypeId: meetPlaceType!.typeId)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+          print("viewWillAppear")
+          
+      }
 
     // MARK: - Table view data source
 

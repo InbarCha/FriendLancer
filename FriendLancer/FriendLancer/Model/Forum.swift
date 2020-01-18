@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import Firebase
 
 class Forum {
     var forumTopic:String = ""
     var forumTopicAvatar:String = ""
+    var lastUpdated:Int64 = 0
     
     init(forumTopic:String, forumTopicAvatar:String) {
         self.forumTopic = forumTopic;
@@ -20,13 +22,16 @@ class Forum {
     init(json:[String:Any]){
         self.forumTopic = json["forumTopic"] as! String;
         self.forumTopicAvatar = json["forumTopicAvatar"] as! String;
+        let ts = json["lastUpdated"] as! Timestamp
+        self.lastUpdated = ts.seconds
     }
     
     
-    func toJson() -> [String:String] {
-        var json = [String:String]();
+    func toJson() -> [String:Any] {
+        var json = [String:Any]();
         json["forumTopic"] = self.forumTopic
         json["forumTopicAvatar"] = self.forumTopicAvatar
+        json["lastUpdated"] = FieldValue.serverTimestamp()
         return json;
     }
     

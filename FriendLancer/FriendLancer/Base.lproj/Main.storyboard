@@ -1529,6 +1529,7 @@ EENhbmNlbA
                     <navigationItem key="navigationItem" title="New Meet Place" id="cy3-BD-pgE"/>
                     <connections>
                         <outlet property="addressTextField" destination="AiU-B1-cyE" id="qVB-Sj-8zK"/>
+                        <outlet property="chooseBtn" destination="zd1-PK-j5p" id="7WI-K1-hru"/>
                         <outlet property="cityTextField" destination="uDy-h1-5RQ" id="o8C-3x-3Jg"/>
                         <outlet property="meetPlaceImage" destination="idJ-bt-djb" id="aZ6-mg-xmu"/>
                         <outlet property="nameTextField" destination="ipJ-h8-8Dt" id="FOE-NL-vhy"/>
