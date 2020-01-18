@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         let email = Auth.auth().currentUser?.email
         Model.instance.getUserByEmail(callback: { (myUser:User?) in
             if(myUser != nil) {
-                self.welcomeLbl.text = "Welcome, " + String(myUser!.name)
+                self.welcomeLbl.text = "Welcome, " + String(myUser!.name) + "!"
             }
         }, email: email!)
     }
@@ -75,7 +75,7 @@ class ViewController: UIViewController {
         LogInBTN.isHidden = false
         RegisterBTN.isHidden = false
         logoutBtn.isHidden = true
-        welcomeLbl.text = ""
+        welcomeLbl.text = "Welcome, guest!"
     }
     
     @IBAction func logoutBtnPressed(_ sender: Any) {
