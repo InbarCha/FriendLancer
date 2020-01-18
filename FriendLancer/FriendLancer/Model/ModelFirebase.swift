@@ -97,7 +97,6 @@ class ModelFirebase{
     
     func update(comment:Comment) {
         let db = Firestore.firestore()
-        var ref: DocumentReference? = nil
         
         db.collection("Users").whereField("commentId", isEqualTo: comment.commentId).getDocuments{ (querySnapshot, err) in
             if let err = err {
@@ -112,7 +111,6 @@ class ModelFirebase{
     
     func update(post:Post) {
         let db = Firestore.firestore()
-        var ref: DocumentReference? = nil
         
         db.collection("Posts").whereField("postId", isEqualTo: post.postId).getDocuments{ (querySnapshot, err) in
             if let err = err {
@@ -129,7 +127,6 @@ class ModelFirebase{
     
     func update(user:User) {
         let db = Firestore.firestore()
-        var ref: DocumentReference? = nil
         
         db.collection("Users").whereField("email", isEqualTo: user.email).getDocuments{ (querySnapshot, err) in
             if let err = err {
@@ -139,6 +136,34 @@ class ModelFirebase{
                     document.reference.updateData(user.toJson()) { (_error:Error?) in
                         ModelEvents.UserDataNotification.post()
                     }
+                }
+            }
+        };
+    }
+    
+    func delete(post:Post) {
+        let db = Firestore.firestore()
+        
+        db.collection("Posts").whereField("postId", isEqualTo: post.postId).getDocuments{ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    document.reference.delete()
+                }
+            }
+        };
+    }
+    
+    func delete(comment:Comment) {
+        let db = Firestore.firestore()
+        
+        db.collection("Comments").whereField("commentId", isEqualTo: comment.commentId).getDocuments{ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    document.reference.delete()
                 }
             }
         };
@@ -200,8 +225,13 @@ class ModelFirebase{
                 print("Error getting documents: \(err)")
                 callback(nil);
             } else {
-                let post = Post(json: querySnapshot!.documents[querySnapshot!.documents.startIndex].data())
-                callback(post);
+                if (querySnapshot!.documents.count > 0) {
+                    let post = Post(json: querySnapshot!.documents[querySnapshot!.documents.startIndex].data())
+                    callback(post);
+                }
+                else {
+                    callback(nil)
+                }
             }
         };
     }

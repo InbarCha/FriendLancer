@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CommentsTableViewController: UITableViewController {
 
@@ -14,15 +15,29 @@ class CommentsTableViewController: UITableViewController {
     var post:Post?
     var data = [Comment]()
     
-    var observer:Any?
+    var observer1:Any?
+    var observer2:Any?
+    var observer3:Any?
     var selected:Comment?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        super.viewDidLoad()
+        observer1 = ModelEvents.CommentDataNotification.observe{
+            self.reloadData();
+        }
+        observer2 = ModelEvents.UserLoggedInDataNotification.observe {
+            self.reloadData();
+        }
+        observer3 = ModelEvents.UserLoggedOutDataNotification.observe {
+            self.reloadData();
+        }
         
-        observer = ModelEvents.CommentDataNotification.observe{
+        reloadData();
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        observer1 = ModelEvents.CommentDataNotification.observe{
             self.reloadData();
         }
         
@@ -30,12 +45,18 @@ class CommentsTableViewController: UITableViewController {
     }
     
     func reloadData(){
-        Model.instance.getAllComments(callback: { (_data:[Comment]?) in
-            if (_data != nil) {
-                self.data = _data!;
-                self.tableView.reloadData();
-            }
-        }, postId: post!.postId)
+        if (Auth.auth().currentUser != nil) {
+            Model.instance.getAllComments(callback: { (_data:[Comment]?) in
+                if (_data != nil) {
+                    self.data = _data!;
+                    self.tableView.reloadData();
+                }
+            }, postId: post!.postId)
+        }
+        else {
+            self.data = [Comment]()
+            self.tableView.reloadData();
+        }
     }
     
     // MARK: - Table view data source
@@ -74,7 +95,7 @@ class CommentsTableViewController: UITableViewController {
         
         if (segue.identifier == "toEditCommentSegue"){
             let vc:EditCommentViewController = segue.destination as! EditCommentViewController
-            vc.post = self.post
+            vc.post = post
             vc.comment = selected
         }
     }

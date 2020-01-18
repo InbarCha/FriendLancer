@@ -831,7 +831,7 @@ EENhbmNlbA
                                 <rect key="frame" x="341" y="617" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39S-Te-hm7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39S-Te-hm7">
                                 <rect key="frame" x="20" y="169" width="367" height="168"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -889,7 +889,7 @@ EENhbmNlbA
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOx-Ul-aiS">
-                                <rect key="frame" x="126" y="723" width="138" height="40"/>
+                                <rect key="frame" x="131" y="698" width="138" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="To Comments"/>
@@ -898,7 +898,7 @@ EENhbmNlbA
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="arrow.right.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7EU-es-6jl">
-                                <rect key="frame" x="273" y="724.5" width="30" height="37"/>
+                                <rect key="frame" x="277" y="700.5" width="30" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
@@ -945,13 +945,22 @@ EENhbmNlbA
                                     <action selector="MaybeArrivingBtnPressed:" destination="nzT-Xe-ZQr" eventType="touchUpInside" id="CwF-xT-upV"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AoR-Fp-nQv">
-                                <rect key="frame" x="0.0" y="86" width="414" height="727"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWv-C5-BYS">
+                                <rect key="frame" x="150" y="746" width="119" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Delete Post"/>
+                                <connections>
+                                    <action selector="deletePostBtnPressed:" destination="nzT-Xe-ZQr" eventType="touchUpInside" id="Xek-y3-nQH"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DET-Aw-jWg">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Want to see the post info? It's only a 5-seconds process to register or login!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4X-lI-FH2">
-                                <rect key="frame" x="38" y="326" width="349" height="107"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Want to see the post info? It's only a 5-seconds process to register or login!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLN-7l-3Mu">
+                                <rect key="frame" x="31" y="324" width="349" height="107"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -971,8 +980,9 @@ EENhbmNlbA
                     <connections>
                         <outlet property="MeetingPlaceLbl" destination="Fwj-u7-oQU" id="IHn-dU-LtE"/>
                         <outlet property="arrivingBtn" destination="M5J-kv-L0a" id="cqv-KR-yli"/>
-                        <outlet property="coverImage" destination="AoR-Fp-nQv" id="tYw-kO-Lvq"/>
-                        <outlet property="coverLbl" destination="d4X-lI-FH2" id="dPA-Lf-IFT"/>
+                        <outlet property="coverImage" destination="DET-Aw-jWg" id="tPI-eB-Rrb"/>
+                        <outlet property="coverLbl" destination="eLN-7l-3Mu" id="2oM-hU-2TU"/>
+                        <outlet property="deletePostBtn" destination="AWv-C5-BYS" id="0t0-Um-bkG"/>
                         <outlet property="editBtn" destination="azI-if-jht" id="Ge6-gs-rH5"/>
                         <outlet property="fifthParticipantName" destination="LZd-Lq-JQA" id="fPR-1s-76X"/>
                         <outlet property="fifthParticipantProf" destination="vf2-Uv-Jnp" id="1XZ-yp-Ni7"/>
@@ -993,6 +1003,7 @@ EENhbmNlbA
                         <outlet property="fourLbl" destination="5ho-Dw-iW2" id="RfJ-Xb-f3q"/>
                         <outlet property="maybeArrivingBtn" destination="Ju9-rh-n5q" id="oIU-cY-umN"/>
                         <outlet property="noParticipantsImage" destination="ZYF-x7-LpM" id="hau-kq-UVT"/>
+                        <outlet property="notArrivingBtn" destination="w4b-Ky-jsC" id="RkM-rb-7jn"/>
                         <outlet property="oneLbl" destination="IrJ-N1-81E" id="kSa-hC-vex"/>
                         <outlet property="postTitleLbl" destination="9Iw-s9-sEu" id="rLd-X0-oGs"/>
                         <outlet property="secondParticipantName" destination="ZBD-fv-bUR" id="IN8-Ym-17H"/>
@@ -1232,14 +1243,6 @@ EENhbmNlbA
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDJ-sG-6qs">
-                                <rect key="frame" x="190" y="399" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveBtnPressed:" destination="B6d-SR-c3W" eventType="touchUpInside" id="wY0-0V-SyJ"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="j80-yG-U4Q">
                                 <rect key="frame" x="20" y="462.5" width="383" height="317"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1251,6 +1254,34 @@ EENhbmNlbA
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ov8-cE-VtY">
+                                <rect key="frame" x="225" y="399" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteBtnPressed:" destination="B6d-SR-c3W" eventType="touchUpInside" id="u6c-Ae-bkn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDJ-sG-6qs">
+                                <rect key="frame" x="134" y="399" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveBtnPressed:" destination="B6d-SR-c3W" eventType="touchUpInside" id="wY0-0V-SyJ"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ujw-g0-0Qf">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You cannot edit this comment, because you are not its owner." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehV-cP-KDK">
+                                <rect key="frame" x="40" y="284" width="334" height="159"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="BRL-Yr-IgF"/>
@@ -1258,6 +1289,9 @@ EENhbmNlbA
                     <navigationItem key="navigationItem" title="Edit Comment" id="9Ah-9t-UpK"/>
                     <connections>
                         <outlet property="commentTextField" destination="unA-p9-L7z" id="Ndq-4B-C3a"/>
+                        <outlet property="coverImage" destination="ujw-g0-0Qf" id="Bn9-sO-ZPX"/>
+                        <outlet property="coverLbl" destination="ehV-cP-KDK" id="IpB-gi-PnB"/>
+                        <outlet property="deleteCommentBtn" destination="ov8-cE-VtY" id="qx4-rF-IEs"/>
                         <outlet property="nameTextField" destination="PEg-OR-bgp" id="B79-Tb-wGq"/>
                         <outlet property="professionTextField" destination="10G-kP-2uH" id="fzu-Wc-SCg"/>
                     </connections>
@@ -1338,7 +1372,7 @@ EENhbmNlbA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAE-n6-fm7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="170" y="2881"/>
+            <point key="canvasLocation" x="170" y="2894"/>
         </scene>
         <!--Add New Post-->
         <scene sceneID="ANy-45-UET">
@@ -1373,7 +1407,7 @@ EENhbmNlbA
                                     <action selector="Save:" destination="rUd-l8-hMd" eventType="touchUpInside" id="izO-Pc-2MG"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" delaysContentTouches="NO" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2m2-Pz-MS1">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" delaysContentTouches="NO" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2m2-Pz-MS1">
                                 <rect key="frame" x="20" y="440" width="355" height="146"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

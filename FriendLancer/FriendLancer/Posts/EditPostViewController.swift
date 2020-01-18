@@ -18,7 +18,6 @@ class EditPostViewController: UIViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var saveBtn: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

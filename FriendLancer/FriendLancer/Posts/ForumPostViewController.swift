@@ -17,12 +17,14 @@ class ForumPostViewController: UIViewController {
     var observer3:Any?
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var coverLbl: UILabel!
+    @IBOutlet weak var deletePostBtn: UIButton!
     
     @IBOutlet weak var postTitleLbl: UILabel!
     @IBOutlet weak var subjectLbl: UILabel!
     @IBOutlet weak var MeetingPlaceLbl: UILabel!
     @IBOutlet weak var arrivingBtn: UIButton!
     @IBOutlet weak var maybeArrivingBtn: UIButton!
+    @IBOutlet weak var notArrivingBtn: UIButton!
     @IBOutlet weak var toCommentsBtn: UIButton!
     @IBOutlet weak var toCommentsArrow: UIImageView!
     @IBOutlet weak var editBtn: UIBarButtonItem!
@@ -66,36 +68,23 @@ class ForumPostViewController: UIViewController {
     @IBOutlet weak var noParticipantsImage: UIImageView!
     
     func reloadData(){
-        Model.instance.getPostById(callback: { (_data:Post?) in
-            if(_data != nil) {
-                self.post = _data!
-                self.postTitleLbl.text = _data!.postTitle
-                self.subjectLbl.text = _data!.postSubject
-                self.MeetingPlaceLbl.text = _data!.meetingPlace
-                
-                self.setView()
-            }
-        }, postId: post!.postId)
+        if (post != nil) {
+            Model.instance.getPostById(callback: { (_data:Post?) in
+                if(_data != nil) {
+                    self.post = _data!
+                    self.postTitleLbl.text = _data!.postTitle
+                    self.subjectLbl.text = _data!.postSubject
+                    self.MeetingPlaceLbl.text = _data!.meetingPlace
+                    
+                    self.setView()
+                }
+            }, postId: post!.postId)
+        }
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        observer1 = ModelEvents.PostDataNotification.observe{
-            self.setView();
-        }
-        observer2 = ModelEvents.UserLoggedInDataNotification.observe {
-            self.setView()
-        }
-        observer3 = ModelEvents.UserLoggedOutDataNotification.observe {
-            self.setView()
-        }
-        
-        setView()
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reloadData()
         setView()
         observer1 = ModelEvents.PostDataNotification.observe{
             self.reloadData();();
@@ -106,8 +95,21 @@ class ForumPostViewController: UIViewController {
         observer3 = ModelEvents.UserLoggedOutDataNotification.observe {
             self.reloadData()
         }
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidLoad()
         reloadData()
+        setView()
+        observer1 = ModelEvents.PostDataNotification.observe{
+            self.reloadData();();
+        }
+        observer2 = ModelEvents.UserLoggedInDataNotification.observe {
+            self.reloadData()
+        }
+        observer3 = ModelEvents.UserLoggedOutDataNotification.observe {
+            self.reloadData()
+        }
     }
     
     func setView() {
@@ -261,9 +263,17 @@ class ForumPostViewController: UIViewController {
                     
                     if (myUser?.email == self.post?.postOwnerUserEmail) {
                         self.editBtn.isEnabled = true
+                        self.deletePostBtn.isEnabled = true
+                        self.arrivingBtn.isEnabled = false
+                        self.maybeArrivingBtn.isEnabled = false
+                        self.notArrivingBtn.isEnabled = false
                     }
                     else {
                         self.editBtn.isEnabled = false
+                        self.deletePostBtn.isEnabled = false
+                        self.arrivingBtn.isEnabled = true
+                        self.maybeArrivingBtn.isEnabled = true
+                        self.notArrivingBtn.isEnabled = true
                     }
                 }
             }, email: email!)
@@ -272,6 +282,7 @@ class ForumPostViewController: UIViewController {
             self.coverImage.isHidden = false
             self.coverLbl.isHidden = false
             self.editBtn.isEnabled = false
+            self.deletePostBtn.isEnabled = false
         }
     }
     
@@ -359,6 +370,24 @@ class ForumPostViewController: UIViewController {
             let post = Post(postTitle: postTitle, postSubject: postSubject, meetingPlace: meetingPlace, forumName: forumName, postOwnerUserEmail: postOwnerUserEmail, participant1Email: participant1Email, participant2Email: participant2Email, participant3Email: participant3Email, participant4Email:participant4Email, participant5Email: email!, participant1Status: participant1Status, participant2Status: participant2Status, participant3Status: participant3Status, participant4Status: participant4Status, participant5Status: status, postId: postId)
             Model.instance.update(post: post)
         }
+        else {
+            let alert = UIAlertController(title: "Error", message: "You can't join the meeting, there are already five participants. Sorry!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    switch action.style{
+                        case .default:
+                            print("default")
+                            self.dismiss(animated: true, completion: nil)
+
+                        case .cancel:
+                            print("cancel")
+                            self.dismiss(animated: true, completion: nil)
+
+                        case .destructive:
+                            print("destructive")
+                            self.dismiss(animated: true, completion: nil)
+                    }}))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -372,6 +401,10 @@ class ForumPostViewController: UIViewController {
         }
     }
     
+    @IBAction func deletePostBtnPressed(_ sender: Any) {
+        Model.instance.delete(post: self.post!)
+        self.navigationController?.popViewController(animated: true);
+    }
     
     /*
     // MARK: - Navigation

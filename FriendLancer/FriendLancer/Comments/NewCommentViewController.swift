@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class NewCommentViewController: UIViewController {
     
@@ -19,12 +20,23 @@ class NewCommentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let email = Auth.auth().currentUser?.email
+        Model.instance.getUserByEmail(callback: { (myUser:User?) in
+            if(myUser != nil) {
+                self.nameTextField.text = myUser?.name
+                self.nameTextField.isEnabled = false
+                
+                self.professionTextField.text = myUser?.profession
+                self.professionTextField.isEnabled = false
+            }
+        }, email: email!)
+        
         // Do any additional setup after loading the view.
     }
     
     @IBAction func SaveBtnPressed(_ sender: Any) {
-        let comment = Comment(userName: nameTextField.text!, userProfession: professionTextField.text!, comment: CommentTextField.text!, postId: post!.postId)
+        let comment = Comment(userEmail:(Auth.auth().currentUser?.email)!, userName: nameTextField.text!, userProfession: professionTextField.text!, comment: CommentTextField.text!, postId: post!.postId)
         Model.instance.add(comment: comment);
         self.navigationController?.popViewController(animated: true);
     }

@@ -58,6 +58,16 @@ class Model {
         modelFirebase.update(user: user)
     }
     
+    func delete(post:Post) {
+        modelFirebase.delete(post:post)
+        ModelEvents.PostDataNotification.post()
+    }
+    
+    func delete(comment:Comment) {
+        modelFirebase.delete(comment:comment)
+        ModelEvents.CommentDataNotification.post()
+    }
+    
     func getUserByEmail(callback:@escaping (User?)->Void, email:String) {
         modelFirebase.getUserByEmail(callback: callback, email: email)
     }
