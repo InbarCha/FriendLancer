@@ -12,7 +12,7 @@ class ModelSql {
      var database: OpaquePointer? = nil
     
     init() {
-        let dbFileName = "databaseFriendLancer13.db"
+        let dbFileName = "databaseFriendLancer23.db"
         if let dir = FileManager.default.urls(for: .documentDirectory, in:
         .userDomainMask).first{
             let path = dir.appendingPathComponent(dbFileName)
@@ -375,10 +375,11 @@ class ModelSql {
         return data
     }
     
-    func getAllPosts()->[Post] {
+    func getAllPosts(forumName:String)->[Post] {
         var sqlite3_stmt: OpaquePointer? = nil
         var data = [Post]()
-        if (sqlite3_prepare_v2(database,"SELECT * from POSTS;",-1,&sqlite3_stmt,nil) == SQLITE_OK){
+        if (sqlite3_prepare_v2(database,"SELECT * from POSTS where FORUM_NAME=?;",-1,&sqlite3_stmt,nil) == SQLITE_OK){
+            sqlite3_bind_text(sqlite3_stmt, 1, forumName,-1,nil);
             while(sqlite3_step(sqlite3_stmt) == SQLITE_ROW){
                 let postId = String(cString:sqlite3_column_text(sqlite3_stmt,0)!);
                 let postTitle = String(cString:sqlite3_column_text(sqlite3_stmt,1)!);

@@ -119,7 +119,26 @@ class Model {
     }
     
     func getAllPosts(callback:@escaping ([Post]?)->Void, forumName:String){
-        modelFirebase.getAllPosts(callback: callback, forumName: forumName)
+        //modelFirebase.getAllPosts(callback: callback, forumName: forumName)
+        
+        let lud = modelSql.getLastUpdateDate(tableName: "POSTS")
+        
+        modelFirebase.getAllPosts(callback: { (postsArray) in
+            var localLud:Int64 = 0
+            for post in postsArray! {
+                self.modelSql.add(post: post)
+                if (post.lastUpdated > localLud) {
+                    localLud = post.lastUpdated
+                }
+            }
+            
+            self.modelSql.setLastUpdateDate(name: "POSTS", lud: localLud)
+            
+            let completeData = self.modelSql.getAllPosts(forumName:forumName)
+            
+            callback(completeData)
+            
+        }, forumName: forumName, since:lud)
     }
     
     func getAllComments(callback:@escaping ([Comment]?)->Void, postId:String) {

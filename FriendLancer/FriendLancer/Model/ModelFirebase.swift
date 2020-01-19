@@ -258,17 +258,26 @@ class ModelFirebase{
         };
     }
     
-    func getAllPosts(callback: @escaping ([Post]?)->Void, forumName: String){
+    func getAllPosts(callback: @escaping ([Post]?)->Void, forumName: String, since:Int64){
         let db = Firestore.firestore()
         
-        db.collection("Posts").whereField("forumName", isEqualTo: forumName).getDocuments { (querySnapshot, err) in
+        db.collection("Posts").order(by:"lastUpdated").start(at:[Timestamp(seconds:since, nanoseconds: 0)]).getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
                 callback(nil);
             } else {
                 var data = [Post]();
                 for document in querySnapshot!.documents {
-                    data.append(Post(json: document.data()));
+                    if let ts = document.data()["lastUpdated"] as? Timestamp {
+                        let tsDate = ts.dateValue()
+                        print("\(tsDate)")
+                        let tsDouble = tsDate.timeIntervalSince1970
+                        print("\(tsDate)")
+                        let post = Post(json: document.data())
+                        if(post.forumName == forumName) {
+                            data.append(post);
+                        }
+                    }
                 }
                 callback(data);
             }

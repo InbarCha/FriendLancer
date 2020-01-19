@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class Post {
     var postId:String = ""
@@ -29,6 +30,7 @@ class Post {
     var participant3Status:String = ""
     var participant4Status:String = ""
     var participant5Status:String = ""
+    var lastUpdated:Int64 = 0
     
     init(postTitle:String, postSubject: StringLiteralType, meetingPlace:String, forumName:String, postOwnerUserEmail:String = "", participant1Email:String = "", participant2Email:String = "", participant3Email:String = "",  participant4Email:String = "", participant5Email:String = "",participant1Status:String = "", participant2Status:String = "", participant3Status:String = "", participant4Status:String = "", participant5Status:String = "", postId:String = "") {
         self.postSubject = postSubject
@@ -74,11 +76,13 @@ class Post {
         self.participant3Status = json["participant3Status"] as! String;
         self.participant4Status = json["participant4Status"] as! String;
         self.participant5Status = json["participant5Status"] as! String;
+        let ts = json["lastUpdated"] as! Timestamp
+        self.lastUpdated = ts.seconds
         self.postId = json["postId"] as! String;
     }
     
-    func toJson() -> [String:String] {
-        var json = [String:String]();
+    func toJson() -> [String:Any] {
+        var json = [String:Any]();
         json["postSubject"] = self.postSubject
         json["meetingPlace"] = self.meetingPlace
         json["forumName"] = self.forumName
@@ -95,6 +99,7 @@ class Post {
         json["participant4Status"] = self.participant4Status
         json["participant5Status"] = self.participant5Status
         json["postId"] = self.postId
+        json["lastUpdated"] = FieldValue.serverTimestamp()
         return json;
     }
     

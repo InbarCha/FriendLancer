@@ -37,22 +37,22 @@ class ForumsForTopicTableViewController: UITableViewController {
         ifUserLoggedIn()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-        observer1 = ModelEvents.PostDataNotification.observe{
-            self.reloadData();
-        }
-        observer2 = ModelEvents.UserLoggedInDataNotification.observe {
-            self.ifUserLoggedIn()
-        }
-        observer3 = ModelEvents.UserLoggedOutDataNotification.observe {
-            self.ifUserLoggedIn()
-        }
-        
-        reloadData();
-        ifUserLoggedIn()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(true)
+//        
+//        observer1 = ModelEvents.PostDataNotification.observe{
+//            self.reloadData();
+//        }
+//        observer2 = ModelEvents.UserLoggedInDataNotification.observe {
+//            self.ifUserLoggedIn()
+//        }
+//        observer3 = ModelEvents.UserLoggedOutDataNotification.observe {
+//            self.ifUserLoggedIn()
+//        }
+//        
+//        reloadData();
+//        ifUserLoggedIn()
+//    }
     
     func ifUserLoggedIn() {
         if (Auth.auth().currentUser != nil) {
