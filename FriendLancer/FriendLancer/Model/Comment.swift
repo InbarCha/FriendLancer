@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class Comment {
     var commentId:String = ""
@@ -15,6 +16,7 @@ class Comment {
     var userName:String = ""
     var userProfession:String = ""
     var comment:String = ""
+    var lastUpdated:Int64 = 0
     
     init(userEmail:String,userName:String, userProfession:String, comment:String, postId:String, commentId:String="") {
         self.userEmail = userEmail
@@ -39,16 +41,19 @@ class Comment {
         self.comment = json["comment"] as! String;
         self.postId = json["postId"] as! String;
         self.commentId = json["commentId"] as! String;
+        let ts = json["lastUpdated"] as! Timestamp
+        self.lastUpdated = ts.seconds
     }
     
-    func toJson() ->[String:String] {
-        var json = [String:String]();
+    func toJson() ->[String:Any] {
+        var json = [String:Any]();
         json["userEmail"] = self.userEmail
         json["userName"] = self.userName
         json["userProfession"] = self.userProfession
         json["comment"] = self.comment
         json["postId"] = self.postId
         json["commentId"] = self.commentId
+        json["lastUpdated"] = FieldValue.serverTimestamp()
         return json;
     }
 }

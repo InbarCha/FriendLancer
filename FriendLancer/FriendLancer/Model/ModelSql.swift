@@ -12,7 +12,7 @@ class ModelSql {
      var database: OpaquePointer? = nil
     
     init() {
-        let dbFileName = "databaseFriendLancer23.db"
+        let dbFileName = "databaseFriendLancer31.db"
         if let dir = FileManager.default.urls(for: .documentDirectory, in:
         .userDomainMask).first{
             let path = dir.appendingPathComponent(dbFileName)
@@ -20,9 +20,9 @@ class ModelSql {
                 print("Failed to open db file: \(path.absoluteString)")
                 return
             }
+            
+            createTables()
         }
-        
-        createTables()
     }
     
     func createTables() {
@@ -404,18 +404,21 @@ class ModelSql {
         return data
     }
     
-    func getAllComments()->[Comment] {
+    func getAllComments(postId:String)->[Comment] {
         var sqlite3_stmt: OpaquePointer? = nil
         var data = [Comment]()
         if (sqlite3_prepare_v2(database,"SELECT * from COMMENTS;",-1,&sqlite3_stmt,nil) == SQLITE_OK){
+            sqlite3_bind_text(sqlite3_stmt, 1, postId,-1,nil);
             while(sqlite3_step(sqlite3_stmt) == SQLITE_ROW){
                 let commentId = String(cString:sqlite3_column_text(sqlite3_stmt,0)!);
-                let postId = String(cString:sqlite3_column_text(sqlite3_stmt,1)!);
+                let currentpostId = String(cString:sqlite3_column_text(sqlite3_stmt,1)!);
                 let userEmail = String(cString:sqlite3_column_text(sqlite3_stmt,2)!);
                 let userName = String(cString:sqlite3_column_text(sqlite3_stmt,3)!);
                 let userProfession = String(cString:sqlite3_column_text(sqlite3_stmt,4)!);
                 let comment = String(cString:sqlite3_column_text(sqlite3_stmt,5)!);
-                data.append(Comment(userEmail: userEmail, userName: userName, userProfession: userProfession, comment: comment, postId: postId, commentId: commentId))
+                if(postId == currentpostId) {
+                    data.append(Comment(userEmail: userEmail, userName: userName, userProfession: userProfession, comment: comment, postId: postId, commentId: commentId))
+                }
             }
         }
         sqlite3_finalize(sqlite3_stmt)

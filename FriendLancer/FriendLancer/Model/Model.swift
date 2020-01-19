@@ -28,7 +28,6 @@ class Model {
     func add(comment:Comment) {
         modelFirebase.add(comment: comment)
         modelSql.add(comment: comment)
-        ModelEvents.CommentDataNotification.post();
     }
     
     func add(meetPlace:MeetPlace) {
@@ -119,11 +118,12 @@ class Model {
     }
     
     func getAllPosts(callback:@escaping ([Post]?)->Void, forumName:String){
-        //modelFirebase.getAllPosts(callback: callback, forumName: forumName)
-        
+        //get the local last update date
         let lud = modelSql.getLastUpdateDate(tableName: "POSTS")
         
+        //get the records from firebase since the local last update date
         modelFirebase.getAllPosts(callback: { (postsArray) in
+            //save the new records to the local db (SQL)
             var localLud:Int64 = 0
             for post in postsArray! {
                 self.modelSql.add(post: post)
@@ -132,17 +132,40 @@ class Model {
                 }
             }
             
+             //save the new local last update date
             self.modelSql.setLastUpdateDate(name: "POSTS", lud: localLud)
             
+            //get the complete data from the local db
             let completeData = self.modelSql.getAllPosts(forumName:forumName)
             
+            //return the complete data to the caller
             callback(completeData)
             
         }, forumName: forumName, since:lud)
     }
     
     func getAllComments(callback:@escaping ([Comment]?)->Void, postId:String) {
-        modelFirebase.getAllComments(callback: callback, postId: postId)
+        //modelFirebase.getAllComments(callback: callback, postId: postId)
+        
+        let lud = modelSql.getLastUpdateDate(tableName: "COMMENTS")
+        
+        modelFirebase.getAllComments(callback: { (commentsArray) in
+            var localLud:Int64 = 0
+            for comment in commentsArray! {
+                self.modelSql.add(comment: comment)
+                if (comment.lastUpdated > localLud) {
+                    localLud = comment.lastUpdated
+                }
+            }
+            
+            self.modelSql.setLastUpdateDate(name: "COMMENTS", lud: localLud)
+            
+            let completeData = self.modelSql.getAllComments(postId: postId)
+            
+            callback(completeData)
+            
+        }, postId: postId, since: lud)
+        
     }
     
     func saveImage(image:UIImage, callback: @escaping (String)->Void){

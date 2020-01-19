@@ -35,6 +35,7 @@ class ModelFirebase{
                     print("Error adding document: \(err)")
                 } else {
                     print("Forum added with ID: \(ref!.documentID)")
+                    ModelEvents.PostDataNotification.post()
                 }
         })
     }
@@ -49,6 +50,7 @@ class ModelFirebase{
                     print("Error adding document: \(err)")
                 } else {
                     print("Forum added with ID: \(ref!.documentID)")
+                    ModelEvents.CommentDataNotification.post()
                 }
         })
     }
@@ -284,17 +286,26 @@ class ModelFirebase{
         };
     }
     
-    func getAllComments(callback: @escaping ([Comment]?)->Void, postId: String){
+    func getAllComments(callback: @escaping ([Comment]?)->Void, postId: String, since:Int64){
         let db = Firestore.firestore()
         
-        db.collection("Comments").whereField("postId", isEqualTo: postId).getDocuments { (querySnapshot, err) in
+        db.collection("Comments").order(by:"lastUpdated").start(at:[Timestamp(seconds:since, nanoseconds: 0)]).getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
                 callback(nil);
             } else {
                 var data = [Comment]();
                 for document in querySnapshot!.documents {
-                    data.append(Comment(json: document.data()));
+                    if let ts = document.data()["lastUpdated"] as? Timestamp {
+                        let tsDate = ts.dateValue()
+                        print("\(tsDate)")
+                        let tsDouble = tsDate.timeIntervalSince1970
+                        print("\(tsDate)")
+                        let comment = Comment(json: document.data())
+                        if(comment.postId == postId) {
+                            data.append(comment);
+                        }
+                    }
                 }
                 callback(data);
             }

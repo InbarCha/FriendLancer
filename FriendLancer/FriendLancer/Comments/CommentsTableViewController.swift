@@ -35,14 +35,14 @@ class CommentsTableViewController: UITableViewController {
         reloadData();
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        observer1 = ModelEvents.CommentDataNotification.observe{
-            self.reloadData();
-        }
-        
-        reloadData();
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(true)
+//        observer1 = ModelEvents.CommentDataNotification.observe{
+//            self.reloadData();
+//        }
+//        
+//        reloadData();
+//    }
     
     func reloadData(){
         if (Auth.auth().currentUser != nil) {
