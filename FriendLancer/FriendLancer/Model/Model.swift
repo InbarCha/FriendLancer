@@ -110,15 +110,34 @@ class Model {
     }
     
     func getAllMeetingPlaces(callback:@escaping ([MeetPlace]?)->Void, meetPlaceTypeId:String) {
-        modelFirebase.getAllMeetingPlaces(meetPlaceTypeId: meetPlaceTypeId, callback: callback)
+        //modelFirebase.getAllMeetingPlaces(meetPlaceTypeId: meetPlaceTypeId, callback: callback)
+        
+        let lud = modelSql.getLastUpdateDate(tableName: "MEETPLACES")
+        
+        modelFirebase.getAllMeetingPlaces(meetPlaceTypeId: meetPlaceTypeId, since: lud) { (meetPlacesArray) in
+            var localLud:Int64 = 0
+            for meetPlace in meetPlacesArray! {
+                self.modelSql.add(meetPlace: meetPlace)
+                if (meetPlace.lastUpdated > localLud) {
+                    localLud = meetPlace.lastUpdated
+                }
+            }
+            
+            self.modelSql.setLastUpdateDate(name: "MEETPLACES", lud: localLud)
+            
+            let completeData = self.modelSql.getAllMeetingPlaces(meetPlaceTypeId: meetPlaceTypeId)
+            
+            callback(completeData)
+        }
     }
     
     func getAllMeetingPlaceTypes(callback:@escaping ([MeetPlaceType]?)->Void){
-        //modelFirebase.getAllMeetingPlaceTypes(callback: callback)
-        
+        //get the local last update date
         let lud = modelSql.getLastUpdateDate(tableName: "MEETPLACETYPES")
         
+        //get the records from firebase since the local last update date
         modelFirebase.getAllMeetingPlaceTypes(since:lud) { (meetPlaceTypesArray) in
+            //save the new records to the local db (SQL)
             var localLud:Int64 = 0
             for meetPlaceType in meetPlaceTypesArray! {
                 self.modelSql.add(meetPlaceType: meetPlaceType)
@@ -127,10 +146,13 @@ class Model {
                 }
             }
             
+            //save the new local last update date
             self.modelSql.setLastUpdateDate(name: "MEETPLACETYPES", lud: localLud)
             
+            //get the complete data from the local db
             let completeData = self.modelSql.getAllMeetingPlaceTypes()
             
+            //return the complete data to the caller
             callback(completeData)
         }
         

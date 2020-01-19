@@ -16,6 +16,7 @@ class MeetPlace {
     var city:String = ""
     var address:String = ""
     var image:String = ""
+    var lastUpdated:Int64 = 0
     
     init(name:String, meetPlaceTypeId:String, address:String, city:String, image:String, meetPlaceId:String = "") {
         self.name = name
@@ -40,6 +41,8 @@ class MeetPlace {
         self.image = json["image"] as! String;
         self.meetPlaceId = json["meetPlaceId"] as! String;
         self.meetPlaceTypeId = json["meetPlaceTypeId"] as! String;
+        let ts = json["lastUpdated"] as! Timestamp
+        self.lastUpdated = ts.seconds
     }
     
     func toJson() ->[String:Any] {
@@ -50,6 +53,7 @@ class MeetPlace {
         json["image"] = self.image
         json["meetPlaceId"] = self.meetPlaceId
         json["meetPlaceTypeId"] = self.meetPlaceTypeId
+        json["lastUpdated"] = FieldValue.serverTimestamp()
         return json;
     }
 }

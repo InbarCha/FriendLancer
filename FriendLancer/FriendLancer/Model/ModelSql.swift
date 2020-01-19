@@ -345,16 +345,17 @@ class ModelSql {
     func getAllMeetingPlaces(meetPlaceTypeId:String)->[MeetPlace] {
         var sqlite3_stmt: OpaquePointer? = nil
         var data = [MeetPlace]()
-        if (sqlite3_prepare_v2(database,"SELECT * from MEETPLACES where MEET_PLACE_TYPE_ID=?;",-1,&sqlite3_stmt,nil) == SQLITE_OK){
-            sqlite3_bind_text(sqlite3_stmt, 1, meetPlaceTypeId.cString(using: .utf8),-1,nil);
+        if (sqlite3_prepare_v2(database,"SELECT * from MEETPLACES;",-1,&sqlite3_stmt,nil) == SQLITE_OK){
             while(sqlite3_step(sqlite3_stmt) == SQLITE_ROW){
                 let meetPlaceId = String(cString:sqlite3_column_text(sqlite3_stmt,0)!);
-                let meetPlaceTypeId = String(cString:sqlite3_column_text(sqlite3_stmt,1)!);
+                let currentMeetPlaceTypeId = String(cString:sqlite3_column_text(sqlite3_stmt,1)!);
                 let name = String(cString:sqlite3_column_text(sqlite3_stmt,2)!);
                 let city = String(cString:sqlite3_column_text(sqlite3_stmt,3)!);
                 let address = String(cString:sqlite3_column_text(sqlite3_stmt,4)!);
                 let image = String(cString:sqlite3_column_text(sqlite3_stmt,5)!);
-                data.append(MeetPlace(name: name, meetPlaceTypeId: meetPlaceTypeId, address: address, city: city, image: image, meetPlaceId: meetPlaceId))
+                if (meetPlaceTypeId == currentMeetPlaceTypeId) {
+                    data.append(MeetPlace(name: name, meetPlaceTypeId: meetPlaceTypeId, address: address, city: city, image: image, meetPlaceId: meetPlaceId))
+                }
             }
         }
         sqlite3_finalize(sqlite3_stmt)
@@ -408,7 +409,6 @@ class ModelSql {
         var sqlite3_stmt: OpaquePointer? = nil
         var data = [Comment]()
         if (sqlite3_prepare_v2(database,"SELECT * from COMMENTS;",-1,&sqlite3_stmt,nil) == SQLITE_OK){
-            sqlite3_bind_text(sqlite3_stmt, 1, postId,-1,nil);
             while(sqlite3_step(sqlite3_stmt) == SQLITE_ROW){
                 let commentId = String(cString:sqlite3_column_text(sqlite3_stmt,0)!);
                 let currentpostId = String(cString:sqlite3_column_text(sqlite3_stmt,1)!);
