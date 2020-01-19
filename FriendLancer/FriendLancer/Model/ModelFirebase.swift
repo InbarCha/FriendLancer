@@ -211,16 +211,22 @@ class ModelFirebase{
         };
     }
     
-    func getAllMeetingPlaceTypes(callback: @escaping ([MeetPlaceType]?)->Void){
+    func getAllMeetingPlaceTypes(since:Int64, callback: @escaping ([MeetPlaceType]?)->Void){
         let db = Firestore.firestore()
-        db.collection("MeetPlaceTypes").getDocuments { (querySnapshot, err) in
+        db.collection("MeetPlaceTypes").order(by:"lastUpdated").start(at:[Timestamp(seconds:since, nanoseconds: 0)]).getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
                 callback(nil);
             } else {
                 var data = [MeetPlaceType]();
                 for document in querySnapshot!.documents {
-                    data.append(MeetPlaceType(json: document.data()));
+                    if let ts = document.data()["lastUpdated"] as? Timestamp {
+                        let tsDate = ts.dateValue()
+                        print("\(tsDate)")
+                        let tsDouble = tsDate.timeIntervalSince1970
+                        print("\(tsDate)")
+                        data.append(MeetPlaceType(json: document.data()));
+                    }
                 }
                 callback(data);
             }

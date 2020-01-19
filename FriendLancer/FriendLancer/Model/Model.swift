@@ -114,7 +114,26 @@ class Model {
     }
     
     func getAllMeetingPlaceTypes(callback:@escaping ([MeetPlaceType]?)->Void){
-        modelFirebase.getAllMeetingPlaceTypes(callback: callback)
+        //modelFirebase.getAllMeetingPlaceTypes(callback: callback)
+        
+        let lud = modelSql.getLastUpdateDate(tableName: "MEETPLACETYPES")
+        
+        modelFirebase.getAllMeetingPlaceTypes(since:lud) { (meetPlaceTypesArray) in
+            var localLud:Int64 = 0
+            for meetPlaceType in meetPlaceTypesArray! {
+                self.modelSql.add(meetPlaceType: meetPlaceType)
+                if (meetPlaceType.lastUpdated > localLud) {
+                    localLud = meetPlaceType.lastUpdated
+                }
+            }
+            
+            self.modelSql.setLastUpdateDate(name: "MEETPLACETYPES", lud: localLud)
+            
+            let completeData = self.modelSql.getAllMeetingPlaceTypes()
+            
+            callback(completeData)
+        }
+        
     }
     
     func getAllPosts(callback:@escaping ([Post]?)->Void, forumName:String){
@@ -145,11 +164,12 @@ class Model {
     }
     
     func getAllComments(callback:@escaping ([Comment]?)->Void, postId:String) {
-        //modelFirebase.getAllComments(callback: callback, postId: postId)
-        
+        //get the local last update date
         let lud = modelSql.getLastUpdateDate(tableName: "COMMENTS")
         
+        //get the records from firebase since the local last update date
         modelFirebase.getAllComments(callback: { (commentsArray) in
+            //save the new records to the local db (SQL)
             var localLud:Int64 = 0
             for comment in commentsArray! {
                 self.modelSql.add(comment: comment)
@@ -158,10 +178,13 @@ class Model {
                 }
             }
             
+            //save the new local last update date
             self.modelSql.setLastUpdateDate(name: "COMMENTS", lud: localLud)
             
+            //get the complete data from the local db
             let completeData = self.modelSql.getAllComments(postId: postId)
             
+            //return the complete data to the caller
             callback(completeData)
             
         }, postId: postId, since: lud)
