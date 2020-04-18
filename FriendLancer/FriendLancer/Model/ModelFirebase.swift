@@ -153,7 +153,9 @@ class ModelFirebase{
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    document.reference.delete()
+                    document.reference.delete() {(_error:Error?) in
+                        ModelEvents.PostDataNotification.post()
+                    }
                 }
             }
         };

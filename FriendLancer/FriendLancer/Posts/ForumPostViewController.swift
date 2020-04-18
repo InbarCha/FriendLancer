@@ -283,6 +283,10 @@ class ForumPostViewController: UIViewController {
             self.coverLbl.isHidden = false
             self.editBtn.isEnabled = false
             self.deletePostBtn.isEnabled = false
+            self.deletePostBtn.isHidden = true
+            self.toCommentsArrow.isHidden = true
+            self.toCommentsBtn.isEnabled = false
+            self.toCommentsBtn.isHidden = true
         }
     }
     

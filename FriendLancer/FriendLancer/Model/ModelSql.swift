@@ -12,7 +12,7 @@ class ModelSql {
      var database: OpaquePointer? = nil
     
     init() {
-        let dbFileName = "databaseFriendLancer31.db"
+        let dbFileName = "databaseFriendLancer50.db"
         if let dir = FileManager.default.urls(for: .documentDirectory, in:
         .userDomainMask).first{
             let path = dir.appendingPathComponent(dbFileName)

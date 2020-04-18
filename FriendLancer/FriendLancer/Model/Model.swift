@@ -166,6 +166,7 @@ class Model {
         modelFirebase.getAllPosts(callback: { (postsArray) in
             //save the new records to the local db (SQL)
             var localLud:Int64 = 0
+            
             for post in postsArray! {
                 self.modelSql.add(post: post)
                 if (post.lastUpdated > localLud) {

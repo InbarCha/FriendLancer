@@ -25,6 +25,7 @@ UINavigationControllerDelegate{
         BannerImage.image = UIImage(named: "NewForumBannerImage2")
         ForumIcon.image = UIImage(named:"avatar")
         spinner.isHidden = true
+        saveNewForumBtn.isHidden = false
         saveNewForumBtn.isEnabled = true
         chooseIconBtn.isEnabled = true
     }

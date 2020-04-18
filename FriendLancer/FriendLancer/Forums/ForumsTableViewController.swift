@@ -19,8 +19,7 @@ class ForumsTableViewController: UITableViewController {
     var observer3:Any?
     var selected:Forum?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func viewLoad() {
         addNewForumBtn.isEnabled = false
         observer1 = ModelEvents.ForumDataNotification.observe{
             self.reloadData();
@@ -34,6 +33,16 @@ class ForumsTableViewController: UITableViewController {
         
         reloadData();
         ifUserLoggedIn()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        viewLoad()
     }
     
     func ifUserLoggedIn() {
@@ -75,11 +84,7 @@ class ForumsTableViewController: UITableViewController {
             }
         };
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
-        
-    }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:ForumTopicsCell = tableView.dequeueReusableCell(withIdentifier: "ForumTopicsCell", for: indexPath) as! ForumTopicsCell

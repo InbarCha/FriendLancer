@@ -22,7 +22,15 @@ class ForumsForTopicTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        viewLoad()
+    }
+    
+    func viewLoad() {
         observer1 = ModelEvents.PostDataNotification.observe{
             self.reloadData();
         }
@@ -36,23 +44,6 @@ class ForumsForTopicTableViewController: UITableViewController {
         reloadData();
         ifUserLoggedIn()
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(true)
-//        
-//        observer1 = ModelEvents.PostDataNotification.observe{
-//            self.reloadData();
-//        }
-//        observer2 = ModelEvents.UserLoggedInDataNotification.observe {
-//            self.ifUserLoggedIn()
-//        }
-//        observer3 = ModelEvents.UserLoggedOutDataNotification.observe {
-//            self.ifUserLoggedIn()
-//        }
-//        
-//        reloadData();
-//        ifUserLoggedIn()
-//    }
     
     func ifUserLoggedIn() {
         if (Auth.auth().currentUser != nil) {
@@ -76,6 +67,7 @@ class ForumsForTopicTableViewController: UITableViewController {
                 self.tableView.reloadData();
             }
         }, forumName: forum!.forumTopic)
+        self.tableView.reloadData();
     }
     
     // MARK: - Table view data source
